@@ -1,10 +1,6 @@
-import ApplicationLogo from '@/components/ApplicationLogo'
-import AuthCard from '@/components/AuthCard'
-import Button from '@/components/Button'
+
 import GuestLayout from '@/components/Layouts/GuestLayout'
-import Input from '@/components/Input'
 import InputError from '@/components/InputError'
-import Label from '@/components/Label'
 import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
 import { useState } from 'react'
@@ -35,100 +31,61 @@ const Register = () => {
 
     return (
         <GuestLayout>
-            <AuthCard
-                logo={
-                    <Link href="/">
-                        <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
-                    </Link>
-                }>
-                <form onSubmit={submitForm}>
-                    {/* Name */}
-                    <div>
-                        <Label htmlFor="name">Name</Label>
 
-                        <Input
-                            id="name"
-                            type="text"
-                            value={name}
-                            className="block mt-1 w-full"
-                            onChange={event => setName(event.target.value)}
-                            required
-                            autoFocus
-                        />
+            <div class="authincation h-100">
+        <div class="container h-100">
+            <div class="row justify-content-center h-100 align-items-center">
+                <div class="col-md-6">
+                    <div class="authincation-content">
+                        <div class="row no-gutters">
+                            <div class="col-xl-12">
+                                <div class="auth-form">
+									<div class="text-center mb-3">
+										<img src="images/logo-full.png" alt=""/>
+									</div>
+                                    <h4 class="text-center mb-4">Sign up your account</h4>
+                                    <form onSubmit={submitForm}>
 
-                        <InputError messages={errors.name} className="mt-2" />
+                                        <div class="form-group">
+                                            <label class="mb-1"><strong>Name</strong></label>
+                                            <input type="text" onChange={event => setName(event.target.value)} class="form-control" value={name} required autoFocus/>
+                                            <InputError messages={errors.email} className="mt-2" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="mb-1"><strong>Email</strong></label>
+                                            <input type="email" value={email}  class="form-control" onChange={event => setEmail(event.target.value)} required/>
+                                            <InputError messages={errors.email} className="mt-2" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="mb-1"><strong>Password</strong></label>
+                                            <input type="password" value={password} onChange={event => setPassword(event.target.value)} class="form-control" required/>
+                                            <InputError messages={errors.password} className="mt-2"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="mb-1"><strong>Confirm Password</strong></label>
+                                            <input type="password" value={passwordConfirmation} onChange={event => setPasswordConfirmation(event.target.value)} class="form-control" required/>
+                                            <InputError messages={errors.passwordConfirmation} className="mt-2"/>
+                                        </div>
+
+                                        <div class="text-center mt-4">
+                                            <button type="submit" class="btn btn-primary btn-block">Sign me up</button>
+                                        </div>
+
+                                    </form>
+                                    <div class="new-account mt-3">
+                                        <p>Already have an account? <Link class="text-primary" href="/login">Sign in</Link></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    {/* Email Address */}
-                    <div className="mt-4">
-                        <Label htmlFor="email">Email</Label>
-
-                        <Input
-                            id="email"
-                            type="email"
-                            value={email}
-                            className="block mt-1 w-full"
-                            onChange={event => setEmail(event.target.value)}
-                            required
-                        />
-
-                        <InputError messages={errors.email} className="mt-2" />
-                    </div>
-
-                    {/* Password */}
-                    <div className="mt-4">
-                        <Label htmlFor="password">Password</Label>
-
-                        <Input
-                            id="password"
-                            type="password"
-                            value={password}
-                            className="block mt-1 w-full"
-                            onChange={event => setPassword(event.target.value)}
-                            required
-                            autoComplete="new-password"
-                        />
-
-                        <InputError
-                            messages={errors.password}
-                            className="mt-2"
-                        />
-                    </div>
-
-                    {/* Confirm Password */}
-                    <div className="mt-4">
-                        <Label htmlFor="passwordConfirmation">
-                            Confirm Password
-                        </Label>
-
-                        <Input
-                            id="passwordConfirmation"
-                            type="password"
-                            value={passwordConfirmation}
-                            className="block mt-1 w-full"
-                            onChange={event =>
-                                setPasswordConfirmation(event.target.value)
-                            }
-                            required
-                        />
-
-                        <InputError
-                            messages={errors.password_confirmation}
-                            className="mt-2"
-                        />
-                    </div>
-
-                    <div className="flex items-center justify-end mt-4">
-                        <Link
-                            href="/login"
-                            className="underline text-sm text-gray-600 hover:text-gray-900">
-                            Already registered?
-                        </Link>
-
-                        <Button className="ml-4">Register</Button>
-                    </div>
-                </form>
-            </AuthCard>
+                </div>
+            </div>
+        </div>
+    </div>
         </GuestLayout>
     )
 }
