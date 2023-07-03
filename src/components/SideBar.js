@@ -52,7 +52,7 @@ function SideBar() {
 							<li><Link href="/dashboard/patient-pants">Patient Pants</Link></li>
 							<li><Link href="/dashboard/check-bed-sheet">Check Bed Sheets</Link></li>
 							<li><Link href="/dashboard/care-bed-sheet">Care Bed Sheets</Link></li>
-							<li><a href="market-capital.html">Split Drape</a></li>
+							<li><Link href="/dashboard/split-drape">Split Drape</Link></li>
                             <li><a href="market-capital.html">Pillow Cover</a></li>
                             <li><a href="market-capital.html">Scrub</a></li>
                             <li><a href="market-capital.html">Isolation Suits</a></li>
