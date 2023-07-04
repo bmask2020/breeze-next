@@ -67,7 +67,7 @@ export default function CheckBedSheet() {
 														</button>
 														<div class="dropdown-menu">
 															<Link class="dropdown-item" href={'/dashboard/check-bed-sheet/' + val.id}>Edit</Link>
-															<Link class="dropdown-item" href="#">Delete</Link>
+															<Link class="dropdown-item" href={'/dashboard/check-bed-sheet/delete/' + val.id}>Delete</Link>
 														</div>
 													</div>
 												</td>

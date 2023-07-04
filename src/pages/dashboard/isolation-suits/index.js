@@ -67,7 +67,7 @@ export default function IsolationSuits() {
 														</button>
 														<div class="dropdown-menu">
 															<Link class="dropdown-item" href={'/dashboard/isolation-suits/' + val.id}>Edit</Link>
-															<Link class="dropdown-item" href="#">Delete</Link>
+															<Link class="dropdown-item" href={'/dashboard/isolation-suits/delete/' + val.id}>Delete</Link>
 														</div>
 													</div>
 												</td>

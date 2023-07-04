@@ -67,7 +67,7 @@ export default function Scrub() {
 														</button>
 														<div class="dropdown-menu">
 															<Link class="dropdown-item" href={'/dashboard/scrub/' + val.id}>Edit</Link>
-															<Link class="dropdown-item" href="#">Delete</Link>
+															<Link class="dropdown-item" href={'/dashboard/scrub/delete/' + val.id}>Delete</Link>
 														</div>
 													</div>
 												</td>

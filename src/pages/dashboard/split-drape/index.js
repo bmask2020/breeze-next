@@ -67,7 +67,7 @@ export default function SplitDrape() {
 														</button>
 														<div class="dropdown-menu">
 															<Link class="dropdown-item" href={'/dashboard/split-drape/' + val.id}>Edit</Link>
-															<Link class="dropdown-item" href="#">Delete</Link>
+															<Link class="dropdown-item" href={'/dashboard/split-drape/delete/' + val.id}>Delete</Link>
 														</div>
 													</div>
 												</td>

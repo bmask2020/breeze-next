@@ -67,7 +67,7 @@ export default function PatientPants() {
 														</button>
 														<div class="dropdown-menu">
 															<Link class="dropdown-item" href={'/dashboard/patient-pants/' + val.id}>Edit</Link>
-															<Link class="dropdown-item" href="#">Delete</Link>
+															<Link class="dropdown-item" href={'/dashboard/patient-pants/delete/' + val.id}>Delete</Link>
 														</div>
 													</div>
 												</td>

@@ -67,7 +67,7 @@ export default function PillowCover() {
 														</button>
 														<div class="dropdown-menu">
 															<Link class="dropdown-item" href={'/dashboard/pillow-cover/' + val.id}>Edit</Link>
-															<Link class="dropdown-item" href="#">Delete</Link>
+															<Link class="dropdown-item" href={'/dashboard/pillow-cover/delete/' + val.id}>Delete</Link>
 														</div>
 													</div>
 												</td>
