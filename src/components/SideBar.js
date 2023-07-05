@@ -56,8 +56,8 @@ function SideBar() {
                             <li><Link href="/dashboard/pillow-cover">Pillow Cover</Link></li>
                             <li><Link href="/dashboard/scrub">Scrub</Link></li>
                             <li><Link href="/dashboard/isolation-suits">Isolation Suits</Link></li>
-                            <li><a href="market-capital.html">Sterilization Paper</a></li>
-                            <li><a href="market-capital.html">Child Gown</a></li>
+                            <li><Link href="/dashboard/sterilization-paper">Sterilization Paper</Link></li>
+                            <li><Link href="/dashboard/child-gown">Child Gown</Link></li>
                           
 						</ul>
 
