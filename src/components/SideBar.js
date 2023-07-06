@@ -68,11 +68,11 @@ function SideBar() {
 							<span class="nav-text">Protective Clothes</span>
 						</a>
                         <ul aria-expanded="false" id="menuUl2" class="mm-collapse">
-                            <li><a href="./app-profile.html">Lab Coat</a></li>
-							<li><a href="./post-details.html">Paper Elbow</a></li>
-                            <li><a href="./app-calender.html">Coverall</a></li>
-                            <li><a href="./app-calender.html">Overshoes</a></li>
-                            <li><a href="./app-calender.html">Overhead</a></li>
+                            <li><Link href="/dashboard/lab-coat">Lab Coat</Link></li>
+							<li><Link href="/dashboard/paper-elbow">Paper Elbow</Link></li>
+                            <li><Link href="/dashboard/coverall">Coverall</Link></li>
+                            <li><Link href="/dashboard/overshoes">Overshoes</Link></li>
+                            <li><Link href="/dashboard/overhead">Overhead</Link></li>
                         </ul>
                     </li>
 
@@ -82,10 +82,10 @@ function SideBar() {
 							<span class="nav-text">Spa and Hygiene</span>
 						</a>
                         <ul aria-expanded="false" id="menuUl3" class="mm-collapse">
-                            <li><a href="./chart-flot.html">Bra</a></li>
-                            <li><a href="./chart-morris.html">Short</a></li>
-                            <li><a href="./chart-chartjs.html">Underwear</a></li>
-                            <li><a href="./chart-chartist.html">Bed Sheets</a></li>
+                            <li><Link href="/dashboard/bra">Bra</Link></li>
+                            <li><Link href="/dashboard/short">Short</Link></li>
+                            <li><Link href="/dashboard/underwear">Underwear</Link></li>
+                            <li><Link href="/dashboard/bed-sheet">Bed Sheets</Link></li>
                            
                         </ul>
                     </li>

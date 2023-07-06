@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 import axios from '@/lib/axios'
 
-export default function ChildGownDelete() {
+export default function OvershoesDelete() {
 
    
     useEffect(() => {
 
         const url = window.location.href;
-        const myId = url.substring(50);
+        const myId = url.substring(49);
 
         const surgicalGown = async () => {
 
@@ -20,10 +20,10 @@ export default function ChildGownDelete() {
            formData.append('id', myId);
          
             axios
-                .post('http://127.0.0.1:8000/api/child-gown/delete', formData)
+                .post('http://127.0.0.1:8000/api/overshoes/delete', formData)
                 .then(response => 
                   
-                    window.location.pathname = '/dashboard/child-gown'
+                    window.location.pathname = '/dashboard/overshoes'
 
                     )
                 .catch(error => console.log(error))
@@ -33,7 +33,7 @@ export default function ChildGownDelete() {
 
             surgicalGown();
 
-       
+
           
     }, []);
 

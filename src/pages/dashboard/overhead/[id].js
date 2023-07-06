@@ -4,7 +4,7 @@ import axios from '@/lib/axios'
 import Swal from 'sweetalert2'
 
 
-export default function ChildGownEdit() {
+export default function OverheadEdit() {
 
     const Swal = require('sweetalert2')
     const [records, setRecords] = useState([]);
@@ -27,7 +27,7 @@ export default function ChildGownEdit() {
     useEffect(() => {
 
         const url = window.location.href;
-        const myId = url.substring(43);
+        const myId = url.substring(41);
         
         
         const patientGown = async () => {
@@ -41,7 +41,7 @@ export default function ChildGownEdit() {
            formData.append('id', myId);
          
             axios
-                .post('http://127.0.0.1:8000/api/child-gown/edit', formData)
+                .post('http://127.0.0.1:8000/api/overhead/edit', formData)
                 .then(response => 
                   
                   setCode(response.data.code) +
@@ -89,7 +89,7 @@ export default function ChildGownEdit() {
         await csrf()
 
         const url = window.location.href;
-        const myId = url.substring(43);
+        const myId = url.substring(41);
       
        let formData = new FormData()
 
@@ -109,7 +109,7 @@ export default function ChildGownEdit() {
        formData.append('description', description);
 
         axios
-            .post('http://127.0.0.1:8000/api/child-gown/update', formData)
+            .post('http://127.0.0.1:8000/api/overhead/update', formData)
             .then(response => 
                 Swal.fire({
                     position: 'top-end',
@@ -138,7 +138,7 @@ export default function ChildGownEdit() {
                 <div class="col-xl-12 col-lg-12">
                         <div class="card">
                             <div class="card-header" style={{padding:'1rem'}}>
-                                <h4 class="card-title">Edit Child Gown</h4>
+                                <h4 class="card-title">Edit Overhead</h4>
                             </div>
                             <div class="card-body">
                                 <div class="basic-form">

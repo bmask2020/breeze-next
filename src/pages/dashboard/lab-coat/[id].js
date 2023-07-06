@@ -4,7 +4,7 @@ import axios from '@/lib/axios'
 import Swal from 'sweetalert2'
 
 
-export default function ChildGownEdit() {
+export default function LabCoatEdit() {
 
     const Swal = require('sweetalert2')
     const [records, setRecords] = useState([]);
@@ -27,7 +27,7 @@ export default function ChildGownEdit() {
     useEffect(() => {
 
         const url = window.location.href;
-        const myId = url.substring(43);
+        const myId = url.substring(41);
         
         
         const patientGown = async () => {
@@ -41,7 +41,7 @@ export default function ChildGownEdit() {
            formData.append('id', myId);
          
             axios
-                .post('http://127.0.0.1:8000/api/child-gown/edit', formData)
+                .post('http://127.0.0.1:8000/api/lab-coat/edit', formData)
                 .then(response => 
                   
                   setCode(response.data.code) +
@@ -63,6 +63,7 @@ export default function ChildGownEdit() {
             }
 
             patientGown();
+
 
      
           
@@ -89,7 +90,7 @@ export default function ChildGownEdit() {
         await csrf()
 
         const url = window.location.href;
-        const myId = url.substring(43);
+        const myId = url.substring(41);
       
        let formData = new FormData()
 
@@ -109,7 +110,7 @@ export default function ChildGownEdit() {
        formData.append('description', description);
 
         axios
-            .post('http://127.0.0.1:8000/api/child-gown/update', formData)
+            .post('http://127.0.0.1:8000/api/lab-coat/update', formData)
             .then(response => 
                 Swal.fire({
                     position: 'top-end',
