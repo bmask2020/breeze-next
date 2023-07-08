@@ -4,14 +4,14 @@ import Link from 'next/link'
 import Footer from '@/components/Footer';
 import { useState, useEffect } from 'react';
 
-export default function PatientPants() {
+export default function LabCoat() {
 
   const [records, setRecords] = useState([]);
    
   useEffect(() => {
 
       async function getData() {
-          const query = await fetch('http://127.0.0.1:8000/api/patient-pants');
+          const query = await fetch('http://127.0.0.1:8000/api/lab-coat');
           const response = await query.json();
           // console.log('response from API ', response);
           setRecords(response);
@@ -25,12 +25,17 @@ export default function PatientPants() {
     return (
         <>
         <Head>
+              <link href="images/favicon.png" rel="shortcut icon" type="image/png"/>
+              <link href="images/apple-touch-icon.png" rel="apple-touch-icon"/>
+              <link href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72"/>
+              <link href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114"/>
+              <link href="images/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144"/>
                 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
                 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
                 <meta name="description" content="Medinova - Health & Medical HTML Template"/>
                 <meta name="keywords" content="clinic, coronavirus, corporate, dental, dentist, doctor, hospital, medical,"/>
                 <meta name="author" content="ThemeMascot"/>
-                <title>Naltex For Medical Clothes - Patient Pants</title>
+                <title>Naltex For Medical Clothes - Lab Coat</title>
                 <link href="frontend/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
                 <link href="frontend/css/animate.min.css" rel="stylesheet" type="text/css"/>
                 <link href="frontend/css/javascript-plugins-bundle.css" rel="stylesheet"/>
@@ -55,12 +60,12 @@ export default function PatientPants() {
         <div class="section-content">
           <div class="row">
             <div class="col-md-12 text-center">
-              <h2 class="title">Patient Pants</h2>
+              <h2 class="title">Lab Coat</h2>
               <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumbs">
                 <div class="breadcrumbs">
                   <span><Link href="/" rel="home">Home</Link></span>
                   <span><i class="fa fa-angle-right"></i></span>
-                  <span><a href="#">Patient Pants</a></span>
+                  <span><a href="#">Lab Coat</a></span>
                   
                 </div>
               </nav>
@@ -91,8 +96,8 @@ export default function PatientPants() {
                         <div class="product">
                           <div class="product-header">
                             <div class="thumb image-swap">
-                              <Link href={'/patient-pants/' + val.id}><img src={'http://127.0.0.1:8000/' + val.img} class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></Link>
-                              <Link href={'/patient-pants/' + val.id}><img src={'http://127.0.0.1:8000/' + val.thumbnail} class="product-hover-image img-responsive img-fullwidth" alt="product"/></Link>
+                              <Link href={'/lab-coat/' + val.id}><img src={'http://127.0.0.1:8000/' + val.img} class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></Link>
+                              <Link href={'/lab-coat/' + val.id}><img src={'http://127.0.0.1:8000/' + val.thumbnail} class="product-hover-image img-responsive img-fullwidth" alt="product"/></Link>
                             </div>
                             <div class="product-button-holder">
                               <ul class="shop-icons">
@@ -102,8 +107,8 @@ export default function PatientPants() {
                             </div>
                           </div>
                           <div class="product-details">
-                            <span class="product-categories"><a href="#" rel="tag">Patient Pants</a></span>
-                            <h5 class="product-title"><a href={'/patient-pants/' + val.id}>{val.name}</a></h5>
+                            <span class="product-categories"><a href="#" rel="tag">Lab Coat</a></span>
+                            <h5 class="product-title"><a href={'/lab-coat/' + val.id}>{val.name}</a></h5>
                             <span class="price">
                               <ins><span class="amount"><span class="currency-symbol"></span>{val.price}</span> EGP</ins>
                             </span>

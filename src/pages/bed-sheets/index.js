@@ -4,14 +4,14 @@ import Link from 'next/link'
 import Footer from '@/components/Footer';
 import { useState, useEffect } from 'react';
 
-export default function PatientPants() {
+export default function BedSheets() {
 
   const [records, setRecords] = useState([]);
    
   useEffect(() => {
 
       async function getData() {
-          const query = await fetch('http://127.0.0.1:8000/api/patient-pants');
+          const query = await fetch('http://127.0.0.1:8000/api/bed-sheet');
           const response = await query.json();
           // console.log('response from API ', response);
           setRecords(response);
@@ -30,7 +30,7 @@ export default function PatientPants() {
                 <meta name="description" content="Medinova - Health & Medical HTML Template"/>
                 <meta name="keywords" content="clinic, coronavirus, corporate, dental, dentist, doctor, hospital, medical,"/>
                 <meta name="author" content="ThemeMascot"/>
-                <title>Naltex For Medical Clothes - Patient Pants</title>
+                <title>Naltex For Medical Clothes - Bed Sheet</title>
                 <link href="frontend/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
                 <link href="frontend/css/animate.min.css" rel="stylesheet" type="text/css"/>
                 <link href="frontend/css/javascript-plugins-bundle.css" rel="stylesheet"/>
@@ -55,12 +55,12 @@ export default function PatientPants() {
         <div class="section-content">
           <div class="row">
             <div class="col-md-12 text-center">
-              <h2 class="title">Patient Pants</h2>
+              <h2 class="title">Bed Sheet</h2>
               <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumbs">
                 <div class="breadcrumbs">
                   <span><Link href="/" rel="home">Home</Link></span>
                   <span><i class="fa fa-angle-right"></i></span>
-                  <span><a href="#">Patient Pants</a></span>
+                  <span><a href="#">Bed Sheet</a></span>
                   
                 </div>
               </nav>
@@ -91,8 +91,8 @@ export default function PatientPants() {
                         <div class="product">
                           <div class="product-header">
                             <div class="thumb image-swap">
-                              <Link href={'/patient-pants/' + val.id}><img src={'http://127.0.0.1:8000/' + val.img} class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></Link>
-                              <Link href={'/patient-pants/' + val.id}><img src={'http://127.0.0.1:8000/' + val.thumbnail} class="product-hover-image img-responsive img-fullwidth" alt="product"/></Link>
+                              <Link href={'/bed-sheets/' + val.id}><img src={'http://127.0.0.1:8000/' + val.img} class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></Link>
+                              <Link href={'/bed-sheets/' + val.id}><img src={'http://127.0.0.1:8000/' + val.thumbnail} class="product-hover-image img-responsive img-fullwidth" alt="product"/></Link>
                             </div>
                             <div class="product-button-holder">
                               <ul class="shop-icons">
@@ -102,8 +102,8 @@ export default function PatientPants() {
                             </div>
                           </div>
                           <div class="product-details">
-                            <span class="product-categories"><a href="#" rel="tag">Patient Pants</a></span>
-                            <h5 class="product-title"><a href={'/patient-pants/' + val.id}>{val.name}</a></h5>
+                            <span class="product-categories"><a href="#" rel="tag">Bed Sheet</a></span>
+                            <h5 class="product-title"><a href={'/bed-sheets/' + val.id}>{val.name}</a></h5>
                             <span class="price">
                               <ins><span class="amount"><span class="currency-symbol"></span>{val.price}</span> EGP</ins>
                             </span>

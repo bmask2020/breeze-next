@@ -103,7 +103,7 @@ export default function PatientGown() {
                             </div>
                           </div>
                           <div class="product-details">
-                            <span class="product-categories"><a href="#" rel="tag">Surgical Gown</a></span>
+                            <span class="product-categories"><a href="#" rel="tag">Patient Gown</a></span>
                             <h5 class="product-title"><a href={'/patient-gown/' + val.id}>{val.name}</a></h5>
                             <span class="price">
                               <ins><span class="amount"><span class="currency-symbol"></span>{val.price}</span> EGP</ins>

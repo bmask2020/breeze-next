@@ -138,7 +138,7 @@ export default function CheckBedSheetEdit() {
                 <div class="col-xl-12 col-lg-12">
                         <div class="card">
                             <div class="card-header" style={{padding:'1rem'}}>
-                                <h4 class="card-title">Edit Patient Pants</h4>
+                                <h4 class="card-title">Edit Check Bed Sheet</h4>
                             </div>
                             <div class="card-body">
                                 <div class="basic-form">
