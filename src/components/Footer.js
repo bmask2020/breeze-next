@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function Footer() {
 
     return (
@@ -10,7 +12,7 @@ export default function Footer() {
           <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="tm-widget-contact-info contact-info-style1 contact-icon-theme-colored1">
               <div class="thumb">
-                <img alt="Logo" src="frontend/images/logo-wide-white.png"/>
+                <img alt="Logo" src="/frontend/images/logo-wide-white.png"/>
               </div>
               <div class="description">203, Envato Labs, Behind Alis Steet, Melbourne, Australia.immersion along the information close the loop on focusing</div>
             </div>
@@ -21,53 +23,19 @@ export default function Footer() {
               <li><a class="social-link" href="#" ><i class="fab fa-instagram"></i></a></li>
             </ul>
           </div>
-          <div class="col-md-6 col-lg-6 col-xl-3">
-            <div class="widget">
-              <h4 class="widget-title widget-title-line-bottom line-bottom-theme-colored1">Latest News</h4>
-              <div class="latest-posts">
-                <article class="post clearfix pb-0 mb-20">
-                  <a class="post-thumb" href="news-details.html"><img src="frontend/images/blog/square1.jpg" alt="images"/></a>
-                  <div class="post-right">
-                    <h5 class="post-title mt-0"><a href="news-details.html">Sustainable Construction</a></h5>
-                    <span class="post-date">
-                      <time class="entry-date" datetime="2021-05-15T06:10:26+00:00">April 15, 2021</time>
-                    </span>
-                  </div>
-                </article>
-                <article class="post clearfix pb-0 mb-20">
-                  <a class="post-thumb" href="news-details.html"><img src="frontend/images/blog/square2.jpg" alt="images"/></a>
-                  <div class="post-right">
-                    <h5 class="post-title mt-0"><a href="news-details.html">Industrial Coatings</a></h5>
-                    <span class="post-date">
-                      <time class="entry-date" datetime="2021-05-15T06:10:26+00:00">April 15, 2021</time>
-                    </span>
-                  </div>
-                </article>
-                <article class="post clearfix pb-0 mb-20">
-                  <a class="post-thumb" href="news-details.html"><img src="frontend/images/blog/square3.jpg" alt="images"/></a>
-                  <div class="post-right">
-                    <h5 class="post-title mt-0"><a href="news-details.html">Storefront Installations</a></h5>
-                    <span class="post-date">
-                      <time class="entry-date" datetime="2021-05-15T06:10:26+00:00">April 15, 2021</time>
-                    </span>
-                  </div>
-                </article>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-6 col-xl-3">
+      
+          <div class="col-md-6 col-lg-6 col-xl-6">
             <div class="widget widget_nav_menu split-nav-menu clearfix">
               <h4 class="widget-title widget-title-line-bottom line-bottom-theme-colored1">Links</h4>
               <ul>
-                <li><a href="index-mp-layout1.html">Insurance</a></li>
-                <li><a href="index-mp-layout1.html">About</a></li>
-                <li><a href="index-mp-layout1.html">Get a Quote</a></li>
-                <li><a href="index-mp-layout1.html">Latest Post</a></li>
-                <li><a href="index-mp-layout1.html">Industries</a></li>
-                <li><a href="index-mp-layout1.html">Contact</a></li>
-                <li><a href="index-mp-layout1.html">Help</a></li>
-                <li><a href="index-mp-layout1.html">Privacy Policy</a></li>
-                <li><a href="index-mp-layout1.html">Terms of use</a></li>
+                <li><Link href="/products-shipping">Products Shipping</Link></li>
+                <li><Link href="/privacy-policy">Privacy Policy</Link></li>
+                <li><Link href="/about">About</Link></li>
+                <li><Link href="/terms-and-condition">Terms and Conditions</Link></li>
+                <li><Link href="/refund-policy">refund & return Policy</Link></li>
+                <li><Link href="/contact">Contact</Link></li>
+                
+                
               </ul>
             </div>
           </div>

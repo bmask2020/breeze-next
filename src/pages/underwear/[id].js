@@ -1,13 +1,13 @@
 import Head from 'next/head'
 import Navbar from '@/components/Navbar'
 import Link from 'next/link'
-import Footer from '@/components/Footer';
-import { useState, useEffect } from 'react';
+import Footer from '@/components/Footer'
+import { useState, useEffect } from 'react'
 import axios from '@/lib/axios'
 import { useRouter } from 'next/router'
 import dynamic from "next/dynamic"
 
-function PatientPants() {
+function Underwear() {
 
   const [records, setRecords] = useState([]);
   const [code,setCode] = useState('');
@@ -27,15 +27,15 @@ function PatientPants() {
     useEffect(() => {
 
         const url = window.location.href;
-        const myId = url.substring(36);
-        console.log(myId);
+        const myId = url.substring(32);
 
+          
           let formData = new FormData()
 
           formData.append('id', myId);
    
            axios
-               .post('http://127.0.0.1:8000/api/patient-pants/product', formData)
+               .post('http://127.0.0.1:8000/api/underwear/product', formData)
                .then(response => 
                 setCode(response.data.code) +
                 setName(response.data.name) +
@@ -55,7 +55,7 @@ function PatientPants() {
    
 
                async function getData() {
-                const query = await fetch('http://127.0.0.1:8000/api/patient-gown/related');
+                const query = await fetch('http://127.0.0.1:8000/api/surgical-gown/related');
                 const response = await query.json();
                 // console.log('response from API ', response);
                 setRecords(response.data);
@@ -65,13 +65,14 @@ function PatientPants() {
     
               getData();
 
-          
+
     }, []);
 
     return (
         <>
         <Head>
-        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+              
+                <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
                 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
                 <meta name="description" content={pageDescrition}/>
                 <meta name="keywords" content={pageKeywords}/>
@@ -92,12 +93,11 @@ function PatientPants() {
                 <script src="/frontend/js/menuzord/js/menuzord.js"></script>
                
                 <script src="/frontend/js/custom.js"></script>
-
             </Head>
             <Navbar />
             <div class="main-content-area">
    
-    <section class="page-title layer-overlay overlay-dark-9 section-typo-light bg-img-center" style={{backgroundImage:'url("/images/bg/bg1.jpg")'}}>
+    <section class="page-title layer-overlay overlay-dark-9 section-typo-light bg-img-center" style={{backgroundImage:'url("/frontend/images/bg/bg1.jpg")'}}>
       <div class="container pt-50 pb-50">
         <div class="section-content">
           <div class="row">
@@ -151,7 +151,7 @@ function PatientPants() {
                   </div>
                   <div class="product_meta">
                     <span class="sku_wrapper">SKU: <span class="sku" data-o_content="woo-hoodie">{code}</span></span>
-                    <span class="posted_in">Category: <Link href="/patient-pants" rel="tag">Patient Pants</Link></span>
+                    <span class="posted_in">Category: <Link href="/underwear" rel="tag">Underwear</Link></span>
                   </div>
                   <div class="btn-add-to-cart">
                     <div class="quantity">
@@ -213,43 +213,43 @@ function PatientPants() {
                    
                   {
 
-                    records.map((val, index) => {
+records.map((val, index) => {
 
-                      return(
+  return(
 
-                        <div class="isotope-item cat1 cat3">
-                        <div class="isotope-item-inner">
-                          <div class="product">
-                            <div class="product-header">
-                              <div class="thumb image-swap">
-                                <Link href={'/patient-gown/' + val.id}><img src={'http://127.0.0.1:8000/' + val.img} class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></Link>
-                                <Link href={'/patient-gown/' + val.id}><img src={'http://127.0.0.1:8000/' + val.thumbnail} class="product-hover-image img-responsive img-fullwidth" alt="product"/></Link>
-                              </div>
-                              <div class="product-button-holder">
-                                <ul class="shop-icons">
-                                  <li class="item"><a href="#" class="button btn-quickview" title="Product quick view"></a></li>
-                                  <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
-                                </ul>
-                              </div>
-                            </div>
-                            <div class="product-details">
-                              <span class="product-categories"><a href="#" rel="tag">Patient Gown</a></span>
-                              <h5 class="product-title"><a href={'/patient-gown/' + val.id}>{val.name}</a></h5>
-                              <span class="price">
-                                <ins><span class="amount"><span class="currency-symbol"></span>{val.price}</span> EGP</ins>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+    <div class="isotope-item cat1 cat3">
+    <div class="isotope-item-inner">
+      <div class="product">
+        <div class="product-header">
+          <div class="thumb image-swap">
+            <Link href={'/surgical-gown/' + val.id}><img src={'http://127.0.0.1:8000/' + val.img} class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></Link>
+            <Link href={'/surgical-gown/' + val.id}><img src={'http://127.0.0.1:8000/' + val.thumbnail} class="product-hover-image img-responsive img-fullwidth" alt="product"/></Link>
+          </div>
+          <div class="product-button-holder">
+            <ul class="shop-icons">
+              <li class="item"><a href="#" class="button btn-quickview" title="Product quick view"></a></li>
+              <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="product-details">
+          <span class="product-categories"><a href="#" rel="tag">Surgical Gown</a></span>
+          <h5 class="product-title"><a href={'/surgical-gown/' + val.id}>{val.name}</a></h5>
+          <span class="price">
+            <ins><span class="amount"><span class="currency-symbol"></span>{val.price}</span> EGP</ins>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
 
-                      )
+  )
 
 
-                    })
-                    }
+})
+}
                    
-                  
+                   
 
                   </div>
                 </div>
@@ -261,9 +261,10 @@ function PatientPants() {
       </div>
     </section>
   </div>
+  
   <Footer />
         </>
     )
 }
 
-export default dynamic (() => Promise.resolve(PatientPants), {ssr: false})
+export default dynamic (() => Promise.resolve(Underwear), {ssr: false})

@@ -96,8 +96,8 @@ export default function PaperElbow() {
                         <div class="product">
                           <div class="product-header">
                             <div class="thumb image-swap">
-                              <Link href={'/lab-coat/' + val.id}><img src={'http://127.0.0.1:8000/' + val.img} class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></Link>
-                              <Link href={'/lab-coat/' + val.id}><img src={'http://127.0.0.1:8000/' + val.thumbnail} class="product-hover-image img-responsive img-fullwidth" alt="product"/></Link>
+                              <Link href={'/paper-elbow/' + val.id}><img src={'http://127.0.0.1:8000/' + val.img} class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></Link>
+                              <Link href={'/paper-elbow/' + val.id}><img src={'http://127.0.0.1:8000/' + val.thumbnail} class="product-hover-image img-responsive img-fullwidth" alt="product"/></Link>
                             </div>
                             <div class="product-button-holder">
                               <ul class="shop-icons">
@@ -108,7 +108,7 @@ export default function PaperElbow() {
                           </div>
                           <div class="product-details">
                             <span class="product-categories"><a href="#" rel="tag">Paper Elbow</a></span>
-                            <h5 class="product-title"><a href={'/lab-coat/' + val.id}>{val.name}</a></h5>
+                            <h5 class="product-title"><a href={'/paper-elbow/' + val.id}>{val.name}</a></h5>
                             <span class="price">
                               <ins><span class="amount"><span class="currency-symbol"></span>{val.price}</span> EGP</ins>
                             </span>

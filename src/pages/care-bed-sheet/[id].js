@@ -7,7 +7,7 @@ import axios from '@/lib/axios'
 import { useRouter } from 'next/router'
 import dynamic from "next/dynamic"
 
-function PatientPants() {
+function CheckBedSheet() {
 
   const [records, setRecords] = useState([]);
   const [code,setCode] = useState('');
@@ -27,15 +27,15 @@ function PatientPants() {
     useEffect(() => {
 
         const url = window.location.href;
-        const myId = url.substring(36);
-        console.log(myId);
+        const myId = url.substring(37);
+     
 
           let formData = new FormData()
 
           formData.append('id', myId);
    
            axios
-               .post('http://127.0.0.1:8000/api/patient-pants/product', formData)
+               .post('http://127.0.0.1:8000/api/care-bed-sheet/product', formData)
                .then(response => 
                 setCode(response.data.code) +
                 setName(response.data.name) +
@@ -55,7 +55,7 @@ function PatientPants() {
    
 
                async function getData() {
-                const query = await fetch('http://127.0.0.1:8000/api/patient-gown/related');
+                const query = await fetch('http://127.0.0.1:8000/api/surgical-gown/related');
                 const response = await query.json();
                 // console.log('response from API ', response);
                 setRecords(response.data);
@@ -97,7 +97,7 @@ function PatientPants() {
             <Navbar />
             <div class="main-content-area">
    
-    <section class="page-title layer-overlay overlay-dark-9 section-typo-light bg-img-center" style={{backgroundImage:'url("/images/bg/bg1.jpg")'}}>
+    <section class="page-title layer-overlay overlay-dark-9 section-typo-light bg-img-center" style={{backgroundImage:'url("/frontend/images/bg/bg1.jpg")'}}>
       <div class="container pt-50 pb-50">
         <div class="section-content">
           <div class="row">
@@ -151,7 +151,7 @@ function PatientPants() {
                   </div>
                   <div class="product_meta">
                     <span class="sku_wrapper">SKU: <span class="sku" data-o_content="woo-hoodie">{code}</span></span>
-                    <span class="posted_in">Category: <Link href="/patient-pants" rel="tag">Patient Pants</Link></span>
+                    <span class="posted_in">Category: <Link href="/check-bed-sheet" rel="tag">Care Bed Sheet</Link></span>
                   </div>
                   <div class="btn-add-to-cart">
                     <div class="quantity">
@@ -222,8 +222,8 @@ function PatientPants() {
                           <div class="product">
                             <div class="product-header">
                               <div class="thumb image-swap">
-                                <Link href={'/patient-gown/' + val.id}><img src={'http://127.0.0.1:8000/' + val.img} class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></Link>
-                                <Link href={'/patient-gown/' + val.id}><img src={'http://127.0.0.1:8000/' + val.thumbnail} class="product-hover-image img-responsive img-fullwidth" alt="product"/></Link>
+                                <Link href={'/surgical-gown/' + val.id}><img src={'http://127.0.0.1:8000/' + val.img} class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></Link>
+                                <Link href={'/surgical-gown/' + val.id}><img src={'http://127.0.0.1:8000/' + val.thumbnail} class="product-hover-image img-responsive img-fullwidth" alt="product"/></Link>
                               </div>
                               <div class="product-button-holder">
                                 <ul class="shop-icons">
@@ -233,8 +233,8 @@ function PatientPants() {
                               </div>
                             </div>
                             <div class="product-details">
-                              <span class="product-categories"><a href="#" rel="tag">Patient Gown</a></span>
-                              <h5 class="product-title"><a href={'/patient-gown/' + val.id}>{val.name}</a></h5>
+                              <span class="product-categories"><a href="#" rel="tag">Surgical Gown</a></span>
+                              <h5 class="product-title"><a href={'/surgical-gown/' + val.id}>{val.name}</a></h5>
                               <span class="price">
                                 <ins><span class="amount"><span class="currency-symbol"></span>{val.price}</span> EGP</ins>
                               </span>
@@ -266,4 +266,4 @@ function PatientPants() {
     )
 }
 
-export default dynamic (() => Promise.resolve(PatientPants), {ssr: false})
+export default dynamic (() => Promise.resolve(CheckBedSheet), {ssr: false})

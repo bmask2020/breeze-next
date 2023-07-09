@@ -1,12 +1,13 @@
 import Head from 'next/head'
 import Navbar from '@/components/Navbar'
 import Link from 'next/link'
-import Footer from '@/components/Footer';
-import { useState, useEffect } from 'react';
+import Footer from '@/components/Footer'
+import { useState, useEffect } from 'react'
 import axios from '@/lib/axios'
 import { useRouter } from 'next/router'
+import dynamic from "next/dynamic"
 
-export default function SurgicalGown() {
+function SurgicalGown() {
 
   const [records, setRecords] = useState([]);
   const [code,setCode] = useState('');
@@ -53,6 +54,16 @@ export default function SurgicalGown() {
                .catch(error => console.log(error))
    
 
+               async function getData() {
+                const query = await fetch('http://127.0.0.1:8000/api/patient-gown/related');
+                const response = await query.json();
+                // console.log('response from API ', response);
+                setRecords(response.data);
+                console.log(response.data);
+    
+              }
+    
+              getData();
           
     }, []);
 
@@ -61,36 +72,29 @@ export default function SurgicalGown() {
         <Head>
                 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
                 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-                <meta name="description" content="Medinova - Health & Medical HTML Template"/>
-                <meta name="keywords" content="clinic, coronavirus, corporate, dental, dentist, doctor, hospital, medical,"/>
-                <meta name="author" content="ThemeMascot"/>
+                <meta name="description" content={pageDescrition}/>
+                <meta name="keywords" content={pageKeywords}/>
+                <meta name="author" content="Naltex For Medical Clothes"/>
                 <title>Naltex For Medical Clothes - {pageTitle}</title>
-               
-
-                <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-                <link href="/css/animate.min.css" rel="stylesheet" type="text/css"/>
-                <link href="/css/javascript-plugins-bundle.css" rel="stylesheet"/>
-             
-                <link href="/js/menuzord/css/menuzord.css" rel="stylesheet"/>
-              
-                <link href="/css/style-main.css" rel="stylesheet" type="text/css"/>
-                <link id="menuzord-menu-skins" href="/css/menuzord-skins/menuzord-rounded-boxed.css" rel="stylesheet"/>
-
-                <link href="/css/responsive.css" rel="stylesheet" type="text/css"/>
-              
-                <link href="/css/colors/theme-skin-color-set1.css" rel="stylesheet" type="text/css"/>
-
-                <script src="/js/jquery.js"></script>
-                <script src="/js/popper.min.js"></script>
-                <script src="/js/bootstrap.min.js"></script>
-                <script src="/js/javascript-plugins-bundle.js"></script>
-                <script src="/js/menuzord/js/menuzord.js"></script>
-
+                <link href="/frontend/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+                <link href="/frontend/css/animate.min.css" rel="stylesheet" type="text/css"/>
+                <link href="/frontend/css/javascript-plugins-bundle.css" rel="stylesheet"/>
+                <link href="/frontend/js/menuzord/css/menuzord.css" rel="stylesheet"/>
+                <link href="/frontend/css/style-main.css" rel="stylesheet" type="text/css"/>
+                <link id="menuzord-menu-skins" href="/frontend/css/menuzord-skins/menuzord-rounded-boxed.css" rel="stylesheet"/>
+                <link href="/frontend/css/responsive.css" rel="stylesheet" type="text/css"/>
+                <link href="/frontend/css/colors/theme-skin-color-set1.css" rel="stylesheet" type="text/css"/>
+                <script src="/frontend/js/jquery.js"></script>
+                <script src="/frontend/js/popper.min.js"></script>
+                <script src="/frontend/js/bootstrap.min.js"></script>
+                <script src="/frontend/js/javascript-plugins-bundle.js"></script>
+                <script src="/frontend/js/menuzord/js/menuzord.js"></script>
+                <script src="/frontend/js/custom.js"></script>
             </Head>
             <Navbar />
             <div class="main-content-area">
    
-    <section class="page-title layer-overlay overlay-dark-9 section-typo-light bg-img-center" style={{backgroundImage:'url("/images/bg/bg1.jpg")'}}>
+    <section class="page-title layer-overlay overlay-dark-9 section-typo-light bg-img-center" style={{backgroundImage:'url("/frontend/images/bg/bg1.jpg")'}}>
       <div class="container pt-50 pb-50">
         <div class="section-content">
           <div class="row">
@@ -119,7 +123,7 @@ export default function SurgicalGown() {
                 <div class="product-image-slider lightgallery-lightbox">
                   <div class="tm-owl-thumb-carousel" data-nav="true" data-slider-id="1">
                     <div data-thumb={'http://127.0.0.1:8000/' + image}>
-                      <a class="lightgallery-trigger" data-exthumbimage={'http://127.0.0.1:8000/' + image} data-src={'http://127.0.0.1:8000/' + image} title="Product 1" href="images/shop/product.jpg"><img class="img-fullwidth" src={'http://127.0.0.1:8000/' + image} alt="images"/></a>
+                      <a class="lightgallery-trigger" data-exthumbimage={'http://127.0.0.1:8000/' + image} data-src={'http://127.0.0.1:8000/' + image} title="Product 1" href={'http://127.0.0.1:8000/' + image}><img class="img-fullwidth" src={'http://127.0.0.1:8000/' + image} alt="images"/></a>
                     </div>
                   
                   </div>
@@ -204,13 +208,19 @@ export default function SurgicalGown() {
                 <div id="gallery-holder-618422" class="isotope-layout grid-4 gutter-15 clearfix lightgallery-lightbox">
                   <div class="isotope-layout-inner">
                    
-                    <div class="isotope-item cat1 cat3">
+                  {
+
+                  records.map((val, index) => {
+
+                    return(
+
+                      <div class="isotope-item cat1 cat3">
                       <div class="isotope-item-inner">
                         <div class="product">
                           <div class="product-header">
                             <div class="thumb image-swap">
-                              <a href="shop-product-details.html"><img src="/images/shop/product.jpg" class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></a>
-                              <a href="shop-product-details.html"><img src="/images/shop/product2.jpg" class="product-hover-image img-responsive img-fullwidth" alt="product"/></a>
+                              <Link href={'/patient-gown/' + val.id}><img src={'http://127.0.0.1:8000/' + val.img} class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></Link>
+                              <Link href={'/patient-gown/' + val.id}><img src={'http://127.0.0.1:8000/' + val.thumbnail} class="product-hover-image img-responsive img-fullwidth" alt="product"/></Link>
                             </div>
                             <div class="product-button-holder">
                               <ul class="shop-icons">
@@ -220,98 +230,22 @@ export default function SurgicalGown() {
                             </div>
                           </div>
                           <div class="product-details">
-                            <span class="product-categories"><a href="#" rel="tag">Music</a></span>
-                            <h5 class="product-title"><a href="shop-product-details.html">Product Title</a></h5>
+                            <span class="product-categories"><a href="#" rel="tag">Patient Gown</a></span>
+                            <h5 class="product-title"><a href={'/patient-gown/' + val.id}>{val.name}</a></h5>
                             <span class="price">
-                              <del><span class="amount"><span class="currency-symbol">£</span>18.00</span></del>
-                              <ins><span class="amount"><span class="currency-symbol">£</span>16.00</span></ins>
+                              <ins><span class="amount"><span class="currency-symbol"></span>{val.price}</span> EGP</ins>
                             </span>
                           </div>
                         </div>
                       </div>
                     </div>
+
+                    )
+
+
+                  })
+                  }
                    
-                    <div class="isotope-item cat3">
-                      <div class="isotope-item-inner">
-                        <div class="product">
-                          <div class="product-header">
-                            <div class="thumb image-swap">
-                              <a href="shop-product-details.html"><img src="/images/shop/product.jpg" class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></a>
-                              <a href="shop-product-details.html"><img src="/images/shop/product2.jpg" class="product-hover-image img-responsive img-fullwidth" alt="product"/></a>
-                            </div>
-                            <div class="product-button-holder">
-                              <ul class="shop-icons">
-                                <li class="item"><a href="#" class="button btn-quickview" title="Product quick view"></a></li>
-                                <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="product-details">
-                            <span class="product-categories"><a href="#" rel="tag">Music</a></span>
-                            <h5 class="product-title"><a href="shop-product-details.html">Product Title</a></h5>
-                            <span class="price">
-                              <del><span class="amount"><span class="currency-symbol">£</span>18.00</span></del>
-                              <ins><span class="amount"><span class="currency-symbol">£</span>16.00</span></ins>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div class="isotope-item cat3">
-                      <div class="isotope-item-inner">
-                        <div class="product">
-                          <div class="product-header">
-                            <div class="thumb image-swap">
-                              <a href="shop-product-details.html"><img src="/images/shop/product.jpg" class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></a>
-                              <a href="shop-product-details.html"><img src="/images/shop/product2.jpg" class="product-hover-image img-responsive img-fullwidth" alt="product"/></a>
-                            </div>
-                            <div class="product-button-holder">
-                              <ul class="shop-icons">
-                                <li class="item"><a href="#" class="button btn-quickview" title="Product quick view"></a></li>
-                                <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="product-details">
-                            <span class="product-categories"><a href="#" rel="tag">Music</a></span>
-                            <h5 class="product-title"><a href="shop-product-details.html">Product Title</a></h5>
-                            <span class="price">
-                              <del><span class="amount"><span class="currency-symbol">£</span>18.00</span></del>
-                              <ins><span class="amount"><span class="currency-symbol">£</span>16.00</span></ins>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                   
-                    <div class="isotope-item cat2 cat3">
-                      <div class="isotope-item-inner">
-                        <div class="product">
-                          <div class="product-header">
-                            <div class="thumb image-swap">
-                              <a href="shop-product-details.html"><img src="/images/shop/product.jpg" class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></a>
-                              <a href="shop-product-details.html"><img src="/images/shop/product2.jpg" class="product-hover-image img-responsive img-fullwidth" alt="product"/></a>
-                            </div>
-                            <div class="product-button-holder">
-                              <ul class="shop-icons">
-                                <li class="item"><a href="#" class="button btn-quickview" title="Product quick view"></a></li>
-                                <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="product-details">
-                            <span class="product-categories"><a href="#" rel="tag">Music</a></span>
-                            <h5 class="product-title"><a href="shop-product-details.html">Product Title</a></h5>
-                            <span class="price">
-                              <del><span class="amount"><span class="currency-symbol">£</span>18.00</span></del>
-                              <ins><span class="amount"><span class="currency-symbol">£</span>16.00</span></ins>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  
 
                   </div>
                 </div>
@@ -322,8 +256,11 @@ export default function SurgicalGown() {
         </div>
       </div>
     </section>
+  
   </div>
   <Footer />
         </>
     )
 }
+
+export default dynamic (() => Promise.resolve(SurgicalGown), {ssr: false})

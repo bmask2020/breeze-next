@@ -114,7 +114,7 @@ const Navbar = () => {
             <div className="row header-nav-col-row">
               <div className="col-sm-auto align-self-center">
                 <a className="menuzord-brand site-brand" href="index-mp-layout1.html">
-                  <img className="logo-default logo-1x" src="frontend/images/logo-wide.png" alt="Logo"/>
+                  <img className="logo-default logo-1x" src="/frontend/images/logo-wide.png" alt="Logo"/>
                   <img className="logo-default logo-2x retina" src="frontend/images/logo-wide@2x.png" alt="Logo"/>
                 </a>
               </div>
@@ -182,13 +182,13 @@ const Navbar = () => {
                     <div className="top-nav-mini-cart-icon-container">
                       <div className="top-nav-mini-cart-icon-contents">
                         <a className="mini-cart-icon" href="shop-cart.html" title="View your shopping cart">
-                          <img src="frontend/images/shopping-cart.png" width="25" alt="cart"/><span className="items-count">1</span> <span className="cart-quick-info">1 item - <span className="amount"><span className="currencySymbol">&pound;</span>18.00</span></span>
+                          <img src="/frontend/images/shopping-cart.png" width="25" alt="cart"/><span className="items-count">1</span> <span className="cart-quick-info">1 item - <span className="amount"><span className="currencySymbol">&pound;</span>18.00</span></span>
                         </a>
                         <div className="dropdown-content">
                           <ul className="cart_list product_list_widget">
                             <li className="mini_cart_item">
                               <a href="#" className="remove remove_from_cart_button" aria-label="Remove this item">&times;</a>
-                              <a href="#"> <img className="attachment-thumbnail" src="frontend/images/shop/product.jpg" width="300" height="300" alt="images"/>Beanie</a>
+                              <a href="#"> <img className="attachment-thumbnail" src="/frontend/images/shop/product.jpg" width="300" height="300" alt="images"/>Beanie</a>
                               <span className="quantity">1  <span className="amount">
                               <span className="currencySymbol"></span>18.00</span></span>
                             </li>
@@ -196,8 +196,31 @@ const Navbar = () => {
                           <p className="total"> <strong>Subtotal:</strong> <span className="woocommerce-Price-amount amount"><span className="currencySymbol"></span>18.00</span> </p>
                           <div className="buttons cart-action-buttons">
                             <div className="row">
-                              <div className="col-6 pe-0"><a href="shop-cart.html" className="btn btn-theme-colored2 btn-block btn-sm wc-forward">View Cart</a></div>
-                              <div className="col-6 pe-1"><a href="shop-checkout.html" className="btn btn-theme-colored1 btn-block btn-sm checkout wc-forward">Checkout</a></div>
+                              <div className="col-6 pe-0">
+
+                                {user ? ( 
+                                <Link href="/shopping-cart" className="btn btn-theme-colored2 btn-block btn-sm wc-forward">View Cart</Link>
+                                ) : (
+
+                                  <Link href="/login" className="btn btn-theme-colored2 btn-block btn-sm wc-forward"> View Cart</Link>
+
+                                )}
+                               
+
+                              </div>
+
+
+                              <div className="col-6 pe-1">
+                                
+                                {user ? ( 
+                                <Link href="/checkout" className="btn btn-theme-colored2 btn-block btn-sm wc-forward">Checkout</Link>
+                                ) : (
+
+                                  <Link href="/login" className="btn btn-theme-colored2 btn-block btn-sm wc-forward"> View Cart</Link>
+
+                                )}
+                              </div>
+
                             </div>
                           </div>
                         </div>
