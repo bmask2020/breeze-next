@@ -4,10 +4,17 @@ import Link from 'next/link'
 import Footer from '@/components/Footer'
 import { useState, useEffect } from 'react'
 import dynamic from "next/dynamic"
+import Swal from 'sweetalert2'
+import axios from '@/lib/axios'
 
 function Contact() {
 
   const [records, setRecords] = useState([]);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
    
   useEffect(() => {
 
@@ -22,6 +29,38 @@ function Contact() {
         getData();
         
   }, []);
+
+
+   const sendEmail = async(e) => {
+
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('subject', subject);
+      formData.append('phone', phone);
+      formData.append('message', message);
+      const fName = document.getElementById('fName');
+      const fEmail = document.getElementById('fEmail');
+      const fSubject = document.getElementById('fSubject');
+      const fPhone = document.getElementById('fPhone');
+      const fMessage = document.getElementById('fMessage');
+      axios.post('http://127.0.0.1:8000/api/sendemail', formData).then(response =>
+      fName.value = '',
+      fEmail.value = '',
+      fSubject.value = '',
+      fPhone.value = '',
+      fMessage.value = '',
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Message Sent Successfully',
+        showConfirmButton: false,
+        timer: 1500
+      })).catch(error => console.log(error))
+      
+
+   }
 
     return (
         <>
@@ -133,18 +172,18 @@ function Contact() {
               <h2 class="mt-0 mb-0">Interested in discussing?</h2>
               <p class="font-size-20">Active & Ready to use Contact Form!</p>
             
-              <form id="contact_form" name="contact_form" class="" action="includes/sendmail.php" method="post">
+              <form id="contact_form" onSubmit={sendEmail}>
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="mb-3">
                       <label>Name <small>*</small></label>
-                      <input name="form_name" class="form-control" type="text" placeholder="Enter Name"/>
+                      <input onChange={(e) => {setName(e.target.value)}} id='fName' class="form-control" type="text" placeholder="Enter Name" required/>
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="mb-3">
                       <label>Email <small>*</small></label>
-                      <input name="form_email" class="form-control required email" type="email" placeholder="Enter Email"/>
+                      <input onChange={(e) => {setEmail(e.target.value)}} id='fEmail' class="form-control required email" type="email" placeholder="Enter Email" required/>
                     </div>
                   </div>
                 </div>
@@ -152,20 +191,20 @@ function Contact() {
                   <div class="col-sm-6">
                     <div class="mb-3">
                       <label>Subject <small>*</small></label>
-                      <input name="form_subject" class="form-control required" type="text" placeholder="Enter Subject"/>
+                      <input onChange={(e) => {setSubject(e.target.value)}} id='fSubject' class="form-control required" type="text" placeholder="Enter Subject" required/>
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="mb-3">
                       <label>Phone</label>
-                      <input name="form_phone" class="form-control" type="text" placeholder="Enter Phone"/>
+                      <input onChange={(e) => setPhone(e.target.value)} id='fPhone' class="form-control" type="text" placeholder="Enter Phone" required/>
                     </div>
                   </div>
                 </div>
 
                 <div class="mb-3">
                   <label>Message</label>
-                  <textarea name="form_message" class="form-control required" rows="5" placeholder="Enter Message"></textarea>
+                  <textarea  class="form-control required" id='fMessage' rows="5" placeholder="Enter Message" onChange={(e) => setMessage(e.target.value)} required></textarea>
                 </div>
                 <div class="mb-3">
                   <input name="form_botcheck" class="form-control" type="hidden" value="" />
