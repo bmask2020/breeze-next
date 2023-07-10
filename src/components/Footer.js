@@ -12,7 +12,7 @@ export default function Footer() {
           <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="tm-widget-contact-info contact-info-style1 contact-icon-theme-colored1">
               <div class="thumb">
-                <img alt="Logo" src="/frontend/images/logo-wide-white.png"/>
+                <img alt="Logo" src="/frontend/images/logo-wide-white.png" style={{width:'6rem'}}/>
               </div>
               <div class="description">203, Envato Labs, Behind Alis Steet, Melbourne, Australia.immersion along the information close the loop on focusing</div>
             </div>
