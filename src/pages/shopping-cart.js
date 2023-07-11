@@ -35,19 +35,18 @@ function ShoppingCart() {
             <Navbar />
             <div className="main-content-area">
     
-    <section className="page-title layer-overlay overlay-dark-9 section-typo-light bg-img-center" data-tm-bg-img="images/bg/bg1.jpg">
+    <section className="page-title layer-overlay overlay-dark-9 section-typo-light bg-img-center" style={{backgroundImage:'url("frontend/images/bg/bg1.jpg")'}}>
       <div className="container pt-50 pb-50">
         <div className="section-content">
           <div className="row">
             <div className="col-md-12 text-center">
-              <h2 className="title">Shop Cart</h2>
+              <h2 className="title">Shopping Cart</h2>
               <nav className="breadcrumbs" role="navigation" aria-label="Breadcrumbs">
                 <div className="breadcrumbs">
-                  <span><a href="#" rel="home">Home</a></span>
+                  <span><Link href="/" rel="home">Home</Link></span>
                   <span><i className="fa fa-angle-right"></i></span>
-                  <span><a href="#">Pages</a></span>
-                  <span><i className="fa fa-angle-right"></i></span>
-                  <span className="active">Page Title</span>
+                  <span><a href="#">Shopping Cart</a></span>
+                
                 </div>
               </nav>
             </div>
@@ -84,9 +83,9 @@ function ShoppingCart() {
                         </ul></td>
                       <td className="product-price"><span className="amount">$36.00</span></td>
                       <td className="product-quantity"><div className="quantity buttons_added">
-                          <input type="button" className="minus" value="-">
-                          <input type="number" size="4" className="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-                          <input type="button" className="plus" value="+">
+                          <input type="button" className="minus" value="-"/>
+                          <input type="number" size="4" className="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1"/>
+                          <input type="button" className="plus" value=""/>
                         </div></td>
                       <td className="product-subtotal"><span className="amount">$36.00</span></td>
                     </tr>
@@ -99,9 +98,9 @@ function ShoppingCart() {
                         </ul></td>
                       <td className="product-price"><span className="amount">$115.00</span></td>
                       <td className="product-quantity"><div className="quantity buttons_added">
-                          <input type="button" className="minus" value="-">
-                          <input type="number" size="4" className="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-                          <input type="button" className="plus" value="+">
+                          <input type="button" className="minus" value="-"/>
+                          <input type="number" size="4" className="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1"/>
+                          <input type="button" className="plus" value="+"/>
                         </div></td>
                       <td className="product-subtotal"><span className="amount">$115.00</span></td>
                     </tr>
@@ -114,9 +113,9 @@ function ShoppingCart() {
                         </ul></td>
                       <td className="product-price"><span className="amount">$68.00</span></td>
                       <td className="product-quantity"><div className="quantity buttons_added">
-                          <input type="button" className="minus" value="-">
-                          <input type="number" size="4" className="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-                          <input type="button" className="plus" value="+">
+                          <input type="button" className="minus" value="-"/>
+                          <input type="number" size="4" className="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1"/>
+                          <input type="button" className="plus" value="+"/>
                         </div></td>
                       <td className="product-subtotal"><span className="amount">$68.00</span></td>
                     </tr>
@@ -136,53 +135,53 @@ function ShoppingCart() {
               </div>
             </div>
 
-            <div className="col-md-12 mt-30">
-              <div className="row">
-                <div className="col-md-5">
-                  <h4>Calculate Shipping</h4>
-                  <form className="form" action="#">
-                    <div className="mb-3 mb-10">
-                      <select className="form-control">
-                        <option>Select Country</option>
-                        <option>Australia</option>
-                        <option>UK</option>
-                        <option>USA</option>
-                      </select>
-                    </div>
-                    <div className="mb-3 mb-10">
-                      <input type="text" className="form-control" placeholder="State/country" value=""/>
-                    </div>
-                    <div className="mb-3 mb-10">
-                      <input type="text" className="form-control" placeholder="Postcod/zip" value=""/>
-                    </div>
-                    <div className="mb-3 mb-30">
-                      <button type="button" className="cart-update-total-button btn btn-theme-colored1">Update Totals</button>
-                    </div>
-                  </form>
+              <div className="col-md-12 mt-30">
+                <div className="row">
+                  <div className="col-md-5">
+                    <h4>Calculate Shipping</h4>
+                    <form className="form" action="#">
+                      <div className="mb-3">
+                        <select className="form-control">
+                          <option>Select Country</option>
+                          <option>Australia</option>
+                          <option>UK</option>
+                          <option>USA</option>
+                        </select>
+                      </div>
+                      <div className="mb-3">
+                        <input type="text" className="form-control" placeholder="State/country" value=""/>
+                      </div>
+                      <div className="mb-3">
+                        <input type="text" className="form-control" placeholder="Postcod/zip" value=""/>
+                      </div>
+                      <div className="mb-3 mb-30">
+                        <button type="button" className="cart-update-total-button btn btn-theme-colored1">Update Totals</button>
+                      </div>
+                    </form>
+                  </div>
+                  <div className="col-md-2">
+                  </div>
+                  <div className="col-md-5">
+                    <h4>Cart Totals</h4>
+                    <table className="table table-bordered">
+                      <tbody>
+                        <tr>
+                          <td>Cart Subtotal</td>
+                          <td>$180.00</td>
+                        </tr>
+                        <tr>
+                          <td>Shipping and Handling</td>
+                          <td>$70.00</td>
+                        </tr>
+                        <tr>
+                          <td>Order Total</td>
+                          <td>$250.00</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <a className="cart-checkout-button btn btn-theme-colored1" href="shop-checkout.html">Proceed to Checkout</a> </div>
                 </div>
-                <div className="col-md-2">
-                </div>
-                <div className="col-md-5">
-                  <h4>Cart Totals</h4>
-                  <table className="table table-bordered">
-                    <tbody>
-                      <tr>
-                        <td>Cart Subtotal</td>
-                        <td>$180.00</td>
-                      </tr>
-                      <tr>
-                        <td>Shipping and Handling</td>
-                        <td>$70.00</td>
-                      </tr>
-                      <tr>
-                        <td>Order Total</td>
-                        <td>$250.00</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <a className="cart-checkout-button btn btn-theme-colored1" href="shop-checkout.html">Proceed to Checkout</a> </div>
               </div>
-            </div>
           </div>
         </div>
       </div>

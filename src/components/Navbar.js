@@ -181,9 +181,16 @@ const Navbar = () => {
                   <li className="hidden-mobile-mode">
                     <div className="top-nav-mini-cart-icon-container">
                       <div className="top-nav-mini-cart-icon-contents">
-                        <a className="mini-cart-icon" href="shop-cart.html" title="View your shopping cart">
-                          <img src="/frontend/images/shopping-cart.png" width="25" alt="cart"/><span className="items-count">1</span> <span className="cart-quick-info">1 item - <span className="amount"><span className="currencySymbol">&pound;</span>18.00</span></span>
-                        </a>
+
+                      
+                        {user ? ( 
+                                <Link href="/shopping-cart" className="mini-cart-icon" title="View your shopping cart"><img src="/frontend/images/shopping-cart.png" width="25" alt="cart"/><span className="items-count">1</span> <span className="cart-quick-info">1 item - <span className="amount"><span className="currencySymbol">&pound;</span>18.00</span></span></Link>
+                                ) : (
+
+                                  <Link href="/login" className="mini-cart-icon" title="View your shopping cart"> <img src="/frontend/images/shopping-cart.png" width="25" alt="cart"/><span className="items-count">1</span> <span className="cart-quick-info">1 item - <span className="amount"><span className="currencySymbol">&pound;</span>18.00</span></span></Link>
+
+                                )}
+
                         <div className="dropdown-content">
                           <ul className="cart_list product_list_widget">
                             <li className="mini_cart_item">

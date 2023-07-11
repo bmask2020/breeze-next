@@ -129,7 +129,7 @@ function Contact() {
                   </div>
                   <div class="icon-text">
                     <h5 class="icon-box-title mt-0">Phone</h5>
-                    <div class="content"><a href="tel:+123.456.7890">+123.456.7890</a></div>
+                    <div class="content"><a href="tel:+201282674565">+201282674565</a></div>
                   </div>
                   <div class="clearfix"></div>
                 </div>
@@ -141,7 +141,7 @@ function Contact() {
                   </div>
                   <div class="icon-text">
                     <h5 class="icon-box-title mt-0">Email</h5>
-                    <div class="content"><a href="mailto:needhelp@yourdomain.com">needhelp@yourdomain.com</a></div>
+                    <div class="content"><a href="mailto:sales@naltexweb.com">sales@naltexweb.com</a></div>
                   </div>
                   <div class="clearfix"></div>
                 </div>
@@ -152,8 +152,8 @@ function Contact() {
                     <a class="icon icon-type-font-icon icon-dark icon-circled"> <i class="flaticon-contact-025-world"></i> </a>
                   </div>
                   <div class="icon-text">
-                    <h5 class="icon-box-title mt-0">Address</h5>
-                    <div class="content">66 Broklyn Street USA</div>
+                    <h5 class="icon-box-title mt-0">Cairo</h5>
+                    <div class="content">Cairo-Alexandria Agricultural Road</div>
                   </div>
                   <div class="clearfix"></div>
                 </div>
@@ -161,11 +161,11 @@ function Contact() {
               <ul class="styled-icons icon-dark icon-sm icon-circled mt-30">
                 <li><a href="#" data-tm-bg-color="#3B5998"><i class="fab fa-facebook"></i></a></li>
                 <li><a href="#" data-tm-bg-color="#02B0E8"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#" data-tm-bg-color="#4C75A3"><i class="fab fa-vk"></i></a></li>
+               
                 <li><a href="#" data-tm-bg-color="#D9CCB9"><i class="fab fa-instagram"></i></a></li>
-                <li><a href="#" data-tm-bg-color="#D71619"><i class="fab fa-google-plus"></i></a></li>
-                <li><a href="#" data-tm-bg-color="#A4CA39"><i class="fab fa-android"></i></a></li>
-                <li><a href="#" data-tm-bg-color="#4C75A3"><i class="fab fa-vk"></i></a></li>
+                <li><a href="#" data-tm-bg-color="#2199cb"><i class="fab fa-telegram"></i></a></li>
+                <li><a href="#" data-tm-bg-color="#0066c8"><i class="fab fa-linkedin"></i></a></li>
+                
               </ul>
             </div>
             <div class="col-lg-6">

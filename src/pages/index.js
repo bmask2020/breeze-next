@@ -3,9 +3,75 @@ import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { useState } from 'react'
+import { useEffect } from 'react'
+
 
 export default function Home() {
     const { user } = useAuth({ middleware: 'guest' })
+
+    const [records1, setRecords1] = useState([]);
+    const [records2, setRecords2] = useState([]);
+    const [records3, setRecords3] = useState([]);
+    const [records4, setRecords4] = useState([]);
+    const [records5, setRecords5] = useState([]);
+   
+    useEffect(() => {
+
+        async function getData() {
+            const query = await fetch('http://127.0.0.1:8000/api/medical-clothes-home');
+            const response = await query.json();
+            // console.log('response from API ', response.data);
+            setRecords1(response.data);
+          
+          }
+
+
+          async function getData2() {
+            const query = await fetch('http://127.0.0.1:8000/api/protective-clothes-home');
+            const response = await query.json();
+            // console.log('response from API ', response.data);
+            setRecords2(response.data);
+          
+          }
+
+
+          async function getData3() {
+            const query = await fetch('http://127.0.0.1:8000/api/beauty-clothes-home');
+            const response = await query.json();
+            // console.log('response from API ', response.data);
+            setRecords3(response.data);
+          
+          }
+
+
+
+          async function getData4() {
+            const query = await fetch('http://127.0.0.1:8000/api/home-offers-home');
+            const response = await query.json();
+            // console.log('response from API ', response.data);
+            setRecords4(response);
+          
+          }
+
+
+
+          async function getData5() {
+            const query = await fetch('http://127.0.0.1:8000/api/home-products-home');
+            const response = await query.json();
+            // console.log('response from API ', response.data);
+            setRecords5(response.data);
+          
+          }
+
+          
+          getData();
+          getData2();
+          getData3();
+          getData4();
+          getData5();
+          
+    }, []);
 
     return (
         <>
@@ -131,170 +197,118 @@ export default function Home() {
 	          <div id="gallery-holder-618422" class="isotope-layout grid-3 gutter-15 clearfix lightgallery-lightbox">
 	            <div class="isotope-layout-inner">
 	             
-	              <div class="isotope-item cat1 cat3">
-	                <div class="isotope-item-inner">
-	                  <div class="product">
-	                    <div class="product-header">
-	                      <span class="onsale">Sale!</span>
-	                      <div class="thumb image-swap">
-	                        <a href="shop-product-details.html"><img src="frontend/images/shop/product.jpg" class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></a>
-	                        <a href="shop-product-details.html"><img src="frontend/images/shop/product2.jpg" class="product-hover-image img-responsive img-fullwidth" alt="product"/></a>
-	                      </div>
-	                      <div class="product-button-holder">
-	                        <ul class="shop-icons">
-	                          <li class="item"><a href="#" class="button btn-quickview" title="Product quick view"></a></li>
-	                          <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
-	                        </ul>
-	                      </div>
-	                    </div>
-	                    <div class="product-details">
-	                      <span class="product-categories"><a href="#" rel="tag">Music</a></span>
-	                      <h5 class="product-title"><a href="shop-product-details.html">Product Title</a></h5>
-	                      <span class="price">
-	                        <del><span class="amount"><span class="currency-symbol">£</span>18.00</span></del>
-	                        <ins><span class="amount"><span class="currency-symbol">£</span>16.00</span></ins>
-	                      </span>
-	                    </div>
-	                  </div>
-	                </div>
-	              </div>
-	             
-	              <div class="isotope-item cat2 cat3">
-	                <div class="isotope-item-inner">
-	                  <div class="product">
-	                    <div class="product-header">
-	                      <div class="thumb image-swap">
-	                        <a href="shop-product-details.html"><img src="frontend/images/shop/product.jpg" class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></a>
-	                        <a href="shop-product-details.html"><img src="frontend/images/shop/product2.jpg" class="product-hover-image img-responsive img-fullwidth" alt="product"/></a>
-	                      </div>
-	                      <div class="product-button-holder">
-	                        <ul class="shop-icons">
-	                          <li class="item"><a href="#" class="button btn-quickview" title="Product quick view"></a></li>
-	                          <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
-	                        </ul>
-	                      </div>
-	                    </div>
-	                    <div class="product-details">
-	                      <span class="product-categories"><a href="#" rel="tag">Music</a></span>
-	                      <h5 class="product-title"><a href="shop-product-details.html">Product Title</a></h5>
-	                      <span class="price">
-	                        <del><span class="amount"><span class="currency-symbol">£</span>18.00</span></del>
-	                        <ins><span class="amount"><span class="currency-symbol">£</span>16.00</span></ins>
-	                      </span>
-	                    </div>
-	                  </div>
-	                </div>
-	              </div>
-	             
-	              <div class="isotope-item cat2">
-	                <div class="isotope-item-inner">
-	                  <div class="product">
-	                    <div class="product-header">
-	                      <div class="thumb image-swap">
-	                        <a href="shop-product-details.html"><img src="frontend/images/shop/product.jpg" class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></a>
-	                        <a href="shop-product-details.html"><img src="frontend/images/shop/product2.jpg" class="product-hover-image img-responsive img-fullwidth" alt="product"/></a>
-	                      </div>
-	                      <div class="product-button-holder">
-	                        <ul class="shop-icons">
-	                          <li class="item"><a href="#" class="button btn-quickview" title="Product quick view"></a></li>
-	                          <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
-	                        </ul>
-	                      </div>
-	                    </div>
-	                    <div class="product-details">
-	                      <span class="product-categories"><a href="#" rel="tag">Music</a></span>
-	                      <h5 class="product-title"><a href="shop-product-details.html">Product Title</a></h5>
-	                      <span class="price">
-	                        <del><span class="amount"><span class="currency-symbol">£</span>18.00</span></del>
-	                        <ins><span class="amount"><span class="currency-symbol">£</span>16.00</span></ins>
-	                      </span>
-	                    </div>
-	                  </div>
-	                </div>
-	              </div>
-	             
-	              <div class="isotope-item cat3">
-	                <div class="isotope-item-inner">
-	                  <div class="product">
-	                    <div class="product-header">
-	                      <div class="thumb image-swap">
-	                        <a href="shop-product-details.html"><img src="frontend/images/shop/product.jpg" class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></a>
-	                        <a href="shop-product-details.html"><img src="frontend/images/shop/product2.jpg" class="product-hover-image img-responsive img-fullwidth" alt="product"/></a>
-	                      </div>
-	                      <div class="product-button-holder">
-	                        <ul class="shop-icons">
-	                          <li class="item"><a href="#" class="button btn-quickview" title="Product quick view"></a></li>
-	                          <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
-	                        </ul>
-	                      </div>
-	                    </div>
-	                    <div class="product-details">
-	                      <span class="product-categories"><a href="#" rel="tag">Music</a></span>
-	                      <h5 class="product-title"><a href="shop-product-details.html">Product Title</a></h5>
-	                      <span class="price">
-	                        <del><span class="amount"><span class="currency-symbol">£</span>18.00</span></del>
-	                        <ins><span class="amount"><span class="currency-symbol">£</span>16.00</span></ins>
-	                      </span>
-	                    </div>
-	                  </div>
-	                </div>
-	              </div>
-	             
-	              <div class="isotope-item cat1">
-	                <div class="isotope-item-inner">
-	                  <div class="product">
-	                    <div class="product-header">
-	                      <span class="onsale">Sale!</span>
-	                      <div class="thumb image-swap">
-	                        <a href="shop-product-details.html"><img src="frontend/images/shop/product.jpg" class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></a>
-	                        <a href="shop-product-details.html"><img src="frontend/images/shop/product2.jpg" class="product-hover-image img-responsive img-fullwidth" alt="product"/></a>
-	                      </div>
-	                      <div class="product-button-holder">
-	                        <ul class="shop-icons">
-	                          <li class="item"><a href="#" class="button btn-quickview" title="Product quick view"></a></li>
-	                          <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
-	                        </ul>
-	                      </div>
-	                    </div>
-	                    <div class="product-details">
-	                      <span class="product-categories"><a href="#" rel="tag">Music</a></span>
-	                      <h5 class="product-title"><a href="shop-product-details.html">Product Title</a></h5>
-	                      <span class="price">
-	                        <del><span class="amount"><span class="currency-symbol">£</span>18.00</span></del>
-	                        <ins><span class="amount"><span class="currency-symbol">£</span>16.00</span></ins>
-	                      </span>
-	                    </div>
-	                  </div>
-	                </div>
-	              </div>
+              {
+
+                records1.map((val, index) => {
+
+                    return (
+
+                      <div class="isotope-item cat1">
+                      <div class="isotope-item-inner">
+                        <div class="product">
+                          <div class="product-header">
+                            <span class="onsale">Sale!</span>
+                            <div class="thumb image-swap">
+                              <Link href={'/medical-clothes/' + val.id}><img src={'http://127.0.0.1:8000/' + val.img} class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></Link>
+                              <Link href={'/medical-clothes' + val.id}><img src={'http://127.0.0.1:8000/' + val.thumbnail} class="product-hover-image img-responsive img-fullwidth" alt="product"/></Link>
+                            </div>
+                            <div class="product-button-holder">
+                              <ul class="shop-icons">
+                                <li class="item"><Link href={'/medical-clothes/' + val.id} class="button btn-quickview" title="Product quick view"></Link></li>
+                                <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div class="product-details">
+                            <span class="product-categories"><a href="#" rel="tag">Medical Clothes</a></span>
+                            <h5 class="product-title"><Link href={'/medical-clothes' + val.id}>{val.name}</Link></h5>
+                            <span class="price">
+                              <ins><span class="amount"><span class="currency-symbol">{val.price}</span> EGP </span></ins>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    )
+                })
+              }
+              
 	              
-	              <div class="isotope-item cat2 cat3">
-	                <div class="isotope-item-inner">
-	                  <div class="product">
-	                    <div class="product-header">
-	                      <div class="thumb image-swap">
-	                        <a href="shop-product-details.html"><img src="frontend/images/shop/product.jpg" class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></a>
-	                        <a href="shop-product-details.html"><img src="frontend/images/shop/product2.jpg" class="product-hover-image img-responsive img-fullwidth" alt="product"/></a>
-	                      </div>
-	                      <div class="product-button-holder">
-	                        <ul class="shop-icons">
-	                          <li class="item"><a href="#" class="button btn-quickview" title="Product quick view"></a></li>
-	                          <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
-	                        </ul>
-	                      </div>
-	                    </div>
-	                    <div class="product-details">
-	                      <span class="product-categories"><a href="#" rel="tag">Music</a></span>
-	                      <h5 class="product-title"><a href="shop-product-details.html">Product Title</a></h5>
-	                      <span class="price">
-	                        <del><span class="amount"><span class="currency-symbol">£</span>18.00</span></del>
-	                        <ins><span class="amount"><span class="currency-symbol">£</span>16.00</span></ins>
-	                      </span>
-	                    </div>
-	                  </div>
-	                </div>
-	              </div>
 	             
+              {
+
+                records2.map((val, index) => {
+
+                    return (
+
+                      <div class="isotope-item cat2">
+                      <div class="isotope-item-inner">
+                        <div class="product">
+                          <div class="product-header">
+                            <span class="onsale">Sale!</span>
+                            <div class="thumb image-swap">
+                              <Link href={'/protective-clothes/' + val.id}><img src={'http://127.0.0.1:8000/' + val.img} class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></Link>
+                              <Link href={'/protective-clothes/' + val.id}><img src={'http://127.0.0.1:8000/' + val.thumbnail} class="product-hover-image img-responsive img-fullwidth" alt="product"/></Link>
+                            </div>
+                            <div class="product-button-holder">
+                              <ul class="shop-icons">
+                                <li class="item"><Link href={'/protective-clothes/' + val.id} class="button btn-quickview" title="Product quick view"></Link></li>
+                                <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div class="product-details">
+                            <span class="product-categories"><a href="#" rel="tag">Protective Clothes</a></span>
+                            <h5 class="product-title"><Link href={'/protective-clothes/' + val.id}>{val.name}</Link></h5>
+                            <span class="price">
+                              <ins><span class="amount"><span class="currency-symbol">{val.price}</span> EGP </span></ins>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    )
+                })
+              }
+	             
+               {
+
+              records3.map((val, index) => {
+
+                  return (
+
+                    <div class="isotope-item cat3">
+                    <div class="isotope-item-inner">
+                      <div class="product">
+                        <div class="product-header">
+                          <span class="onsale">Sale!</span>
+                          <div class="thumb image-swap">
+                            <Link href={'/beauty-clothes/' + val.id}><img src={'http://127.0.0.1:8000/' + val.img} class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></Link>
+                            <Link href={'/beauty-clothes/' + val.id}><img src={'http://127.0.0.1:8000/' + val.thumbnail} class="product-hover-image img-responsive img-fullwidth" alt="product"/></Link>
+                          </div>
+                          <div class="product-button-holder">
+                            <ul class="shop-icons">
+                              <li class="item"><Link href={'/beauty-clothes' + val.id} class="button btn-quickview" title="Product quick view"></Link></li>
+                              <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="product-details">
+                          <span class="product-categories"><a href="#" rel="tag">Beauty Clothes</a></span>
+                          <h5 class="product-title"><Link href={'/beauty-clothes/' + val.id}>{val.name}</Link></h5>
+                          <span class="price">
+                            <ins><span class="amount"><span class="currency-symbol">{val.price}</span> EGP </span></ins>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  )
+              })
+              }
+	             
+	           
+	            
 
 	            </div>
 	          </div>
@@ -308,13 +322,13 @@ export default function Home() {
       <div class="container pt-40 pb-40">
         <div class="row">
           <div class="col-md-5 text-center">
-            <img alt="images" src="frontend/images/shop/cap.jpg"/>
+            <img alt="images" src={'http://127.0.0.1:8000/' + records4.img}/>
           </div>
           <div class="col-md-7 text-left">
             <h4 class="mt-50 text-theme-colored1 mb-0">Big discount!</h4>
-            <h1 class="mt-0">New Trendy Products</h1>
-            <h4 class="mt-10 text-gray">Up to 21% off on all products!</h4>
-            <a href="shop-products.html" class="btn btn-theme-colored1 btn-round mt-20">Shop now</a>
+            <h1 class="mt-0">{records4.name}</h1>
+            <h4 class="mt-10 text-gray">Special Discount For Limited Time</h4>
+            <Link href={'/offers/' + records4.id} class="btn btn-theme-colored1 btn-round mt-20">Shop now</Link>
           </div>
         </div>
       </div>
@@ -337,117 +351,42 @@ export default function Home() {
             <div id="product-gallery-holder-2222" class="isotope-layout grid-4 gutter-15 clearfix lightgallery-lightbox">
               <div class="isotope-layout-inner">
 
-                <div class="isotope-item cat1 cat3">
-                  <div class="isotope-item-inner">
-                    <div class="product">
-                      <div class="product-header">
-                        <span class="onsale">Sale!</span>
-                        <div class="thumb image-swap">
-                          <a href="shop-product-details.html"><img src="frontend/images/shop/product.jpg" class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></a>
-                          <a href="shop-product-details.html"><img src="frontend/images/shop/product.jpg" class="product-hover-image img-responsive img-fullwidth" alt="product"/></a>
-                        </div>
-                        <div class="product-button-holder">
-                          <ul class="shop-icons">
-                            <li class="item"><a href="#" class="button btn-quickview" title="Product quick view"></a></li>
-                            <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="product-details">
-                        <span class="product-categories"><a href="#" rel="tag">Music</a></span>
-                        <h5 class="product-title"><a href="shop-product-details.html">Product Title</a></h5>
-                        <span class="price">
-                          <del><span class="amount"><span class="currency-symbol">£</span>18.00</span></del>
-                          <ins><span class="amount"><span class="currency-symbol">£</span>16.00</span></ins>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="isotope-item cat3">
-                  <div class="isotope-item-inner">
-                    <div class="product">
-                      <div class="product-header">
-                        <div class="thumb image-swap">
-                          <a href="shop-product-details.html"><img src="frontend/images/shop/product2.jpg" class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></a>
-                          <a href="shop-product-details.html"><img src="frontend/images/shop/product2.jpg" class="product-hover-image img-responsive img-fullwidth" alt="product"/></a>
-                        </div>
-                        <div class="product-button-holder">
-                          <ul class="shop-icons">
-                            <li class="item"><a href="#" class="button btn-quickview" title="Product quick view"></a></li>
-                            <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="product-details">
-                        <span class="product-categories"><a href="#" rel="tag">Music</a></span>
-                        <h5 class="product-title"><a href="shop-product-details.html">Product Title</a></h5>
-                        <span class="price">
-                          <del><span class="amount"><span class="currency-symbol">£</span>18.00</span></del>
-                          <ins><span class="amount"><span class="currency-symbol">£</span>16.00</span></ins>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-               
-                <div class="isotope-item cat1">
-                  <div class="isotope-item-inner">
-                    <div class="product">
-                      <div class="product-header">
-                        <span class="onsale">Sale!</span>
-                        <div class="thumb image-swap">
-                          <a href="shop-product-details.html"><img src="frontend/images/shop/product.jpg" class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></a>
-                          <a href="shop-product-details.html"><img src="frontend/images/shop/product.jpg" class="product-hover-image img-responsive img-fullwidth" alt="product"/></a>
-                        </div>
-                        <div class="product-button-holder">
-                          <ul class="shop-icons">
-                            <li class="item"><a href="#" class="button btn-quickview" title="Product quick view"></a></li>
-                            <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="product-details">
-                        <span class="product-categories"><a href="#" rel="tag">Music</a></span>
-                        <h5 class="product-title"><a href="shop-product-details.html">Product Title</a></h5>
-                        <span class="price">
-                          <del><span class="amount"><span class="currency-symbol">£</span>18.00</span></del>
-                          <ins><span class="amount"><span class="currency-symbol">£</span>16.00</span></ins>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-               
-                <div class="isotope-item cat2 cat3">
-                  <div class="isotope-item-inner">
-                    <div class="product">
-                      <div class="product-header">
-                        <div class="thumb image-swap">
-                          <a href="shop-product-details.html"><img src="frontend/images/shop/product2.jpg" class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></a>
-                          <a href="shop-product-details.html"><img src="frontend/images/shop/product2.jpg" class="product-hover-image img-responsive img-fullwidth" alt="product"/></a>
-                        </div>
-                        <div class="product-button-holder">
-                          <ul class="shop-icons">
-                            <li class="item"><a href="#" class="button btn-quickview" title="Product quick view"></a></li>
-                            <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="product-details">
-                        <span class="product-categories"><a href="#" rel="tag">Music</a></span>
-                        <h5 class="product-title"><a href="shop-product-details.html">Product Title</a></h5>
-                        <span class="price">
-                          <del><span class="amount"><span class="currency-symbol">£</span>18.00</span></del>
-                          <ins><span class="amount"><span class="currency-symbol">£</span>16.00</span></ins>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
+                {
+                  records5.map((val,index) => {
 
+                    return (
+
+                      <div class="isotope-item cat1">
+                      <div class="isotope-item-inner">
+                        <div class="product">
+                          <div class="product-header">
+                            <span class="onsale">Sale!</span>
+                            <div class="thumb image-swap">
+                              <Link href={'/home-products/' + val.id}><img src={'http://127.0.0.1:8000/' + val.img} class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></Link>
+                              <Link href={'/home-products/' + val.id}><img src={'http://127.0.0.1:8000/' + val.thumbnail} class="product-hover-image img-responsive img-fullwidth" alt="product"/></Link>
+                            </div>
+                            <div class="product-button-holder">
+                              <ul class="shop-icons">
+                                <li class="item"><Link href={'/home-products/' + val.id} class="button btn-quickview" title="Product quick view"></Link></li>
+                                <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div class="product-details">
+                            <span class="product-categories"><a href="#" rel="tag">Medical Clothes</a></span>
+                            <h5 class="product-title"><Link href={'/home-products/' + val.id}>{val.name}</Link></h5>
+                            <span class="price">
+                              <ins><span class="amount"><span class="currency-symbol">{val.price}</span> EGP</span></ins>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    )
+
+                  })
+                }
+                
               </div>
             </div>
           </div>

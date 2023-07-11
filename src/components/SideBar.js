@@ -39,14 +39,21 @@ function SideBar() {
 				<br />
 				<ul class="metismenu" id="menu">
 
-                    <li><a class="ai-icon" href="#"  aria-expanded="false">
-							<i class="flaticon-144-layout"></i><span class="nav-text">Dashboard</span></a></li>
+                    <li><Link class="ai-icon" href="/dashboard"  aria-expanded="false">
+							<i class="flaticon-144-layout"></i><span class="nav-text">Dashboard</span></Link></li>
+
+                    <li><Link class="ai-icon" href="/dashboard/home-offers"  aria-expanded="false">
+							<i class="flaticon-144-layout"></i><span class="nav-text">Home Offers</span></Link></li>
+
+                    <li><Link class="ai-icon" href="/dashboard/home-products"  aria-expanded="false">
+							<i class="flaticon-144-layout"></i><span class="nav-text">Home Products</span></Link></li>
 
                     <li id="FMenu" onClick={drop1}><a class="has-arrow ai-icon" href="#"  aria-expanded="false">
 							<i class="flaticon-144-layout"></i>
 							<span class="nav-text">Medical Clothes</span>
 						</a>
                         <ul aria-expanded="false" id="menuUl" class="mm-collapse">
+                            <li><Link href="/dashboard/medical-clothes-home">Home</Link></li>
 							<li><Link href="/dashboard/surgical-gown">Surgical Gown</Link></li>
 							<li><Link href="/dashboard/patient-gown">Patient Gown</Link></li>
 							<li><Link href="/dashboard/patient-pants">Patient Pants</Link></li>
@@ -68,6 +75,7 @@ function SideBar() {
 							<span class="nav-text">Protective Clothes</span>
 						</a>
                         <ul aria-expanded="false" id="menuUl2" class="mm-collapse">
+                            <li><Link href="/dashboard/protective-clothes-home">Home</Link></li>
                             <li><Link href="/dashboard/lab-coat">Lab Coat</Link></li>
 							<li><Link href="/dashboard/paper-elbow">Paper Elbow</Link></li>
                             <li><Link href="/dashboard/coverall">Coverall</Link></li>
@@ -82,6 +90,7 @@ function SideBar() {
 							<span class="nav-text">Spa and Hygiene</span>
 						</a>
                         <ul aria-expanded="false" id="menuUl3" class="mm-collapse">
+                            <li><Link href="/dashboard/beauty-clothes-home">Home</Link></li>
                             <li><Link href="/dashboard/bra">Bra</Link></li>
                             <li><Link href="/dashboard/short">Short</Link></li>
                             <li><Link href="/dashboard/underwear">Underwear</Link></li>
