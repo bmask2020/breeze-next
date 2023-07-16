@@ -153,7 +153,7 @@ function HomeProducts() {
                   </div>
                   <div class="product_meta">
                     <span class="sku_wrapper">SKU: <span class="sku" data-o_content="woo-hoodie">{code}</span></span>
-                    <span class="posted_in">Category: <Link href="/bed-sheets" rel="tag">Bed Sheet</Link></span>
+                    <span class="posted_in">Category: <Link href="/" rel="tag">Home Product</Link></span>
                   </div>
                   <div class="btn-add-to-cart">
                     <div class="quantity">

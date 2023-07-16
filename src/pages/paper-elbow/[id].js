@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import axios from '@/lib/axios'
 import { useRouter } from 'next/router'
 import dynamic from "next/dynamic"
+import Swal from 'sweetalert2'
 
 function PaperElbow() {
 
@@ -55,7 +56,7 @@ function PaperElbow() {
    
 
                async function getData() {
-                const query = await fetch('http://127.0.0.1:8000/api/surgical-gown/related');
+                const query = await fetch('http://127.0.0.1:8000/api/paper-elbow/related');
                 const response = await query.json();
                 // console.log('response from API ', response);
                 setRecords(response.data);
@@ -68,6 +69,84 @@ function PaperElbow() {
      
        
     }, []);
+
+
+    const addCart = async(e) => {
+
+      e.preventDefault();
+      const formData = e.target.getAttribute('id');
+      const getForm = document.getElementById(formData).elements;
+  
+    
+      const code = getForm['3'].value;
+      const name = getForm['4'].value;
+      const price = getForm['5'].value;
+      const material = getForm['6'].value;
+      const color = getForm['7'].value;
+      const img = getForm['8'].value;
+      const quantity = getForm['1'].value;
+  
+      let formData2 = new FormData()
+      formData2.append('code',code);
+      formData2.append('name', name);
+      formData2.append('price', price);
+      formData2.append('material', material);
+      formData2.append('color', color);
+      formData2.append('img', img);
+      formData2.append('quantity', quantity);
+     
+  
+      axios.post('http://127.0.0.1:8000/api/add-cart', formData2).then(response => 
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Product Add Success',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      ).catch(error => console.log(error));
+  
+  
+    }
+
+
+    const addCart2 = async(e) => {
+
+      e.preventDefault();
+      const formData = e.target.getAttribute('id');
+      const getForm = document.getElementById(formData).elements;
+
+    
+      const code = getForm['0'].value;
+      const name = getForm['1'].value;
+      const price = getForm['2'].value;
+      const material = getForm['3'].value;
+      const color = getForm['4'].value;
+      const img = getForm['5'].value;
+      const quantity = getForm['6'].value;
+
+      let formData2 = new FormData()
+      formData2.append('code',code);
+      formData2.append('name', name);
+      formData2.append('price', price);
+      formData2.append('material', material);
+      formData2.append('color', color);
+      formData2.append('img', img);
+      formData2.append('quantity', quantity);
+     
+
+      axios.post('http://127.0.0.1:8000/api/add-cart', formData2).then(response => 
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Product Add Success',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      ).catch(error => console.log(error));
+
+
+    }
 
     return (
         <>
@@ -155,12 +234,20 @@ function PaperElbow() {
                     <span class="posted_in">Category: <Link href="/paper-elbow" rel="tag">Paper Elbow</Link></span>
                   </div>
                   <div class="btn-add-to-cart">
-                    <div class="quantity">
-                      <input class="minus" type="button" value="-"/>
-                      <input type="number" id="quantity_5f0c6f4cb0b78" class="input-text qty text" step="1" min="1" max="" name="quantity" value="1" title="Qty" size="4" placeholder="" inputmode="numeric"/>
-                      <input class="plus" type="button" value="+"/>
-                    </div>
-                    <a href="shop-cart.html" class="btn btn-theme-colored1 ml-10">Add to cart</a>
+                    <form onSubmit={addCart} id='medicalPro'>
+                      <div class="quantity">
+                          <input class="minus" type="button" value="-"/>
+                          <input type="number" id='quantity' name='quantity' class="input-text qty text" step="1" min="1" max="" value="1" title="Qty" size="4" placeholder="" inputmode="numeric"/>
+                          <input class="plus" type="button" value="+"/>
+                      </div>
+                        <input type='hidden' id='code' name='code' value={code} />
+                        <input type='hidden' id='name' name='name' value={name} />
+                        <input type='hidden' id='price' name='price' value={price} />
+                        <input type='hidden' id='material' name='material' value={material} />
+                        <input type='hidden' id='color' name='color' value={color} />
+                        <input type='hidden' id='img' name='img' value={image} />
+                        <button type='submit' class="btn btn-theme-colored1 ml-10">Add to cart</button>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -216,6 +303,9 @@ function PaperElbow() {
 
 records.map((val, index) => {
 
+
+  let cart = 'PaperElbowRelatedPro';
+
   return(
 
     <div class="isotope-item cat1 cat3">
@@ -223,19 +313,30 @@ records.map((val, index) => {
       <div class="product">
         <div class="product-header">
           <div class="thumb image-swap">
-            <Link href={'/surgical-gown/' + val.id}><img src={'http://127.0.0.1:8000/' + val.img} class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></Link>
-            <Link href={'/surgical-gown/' + val.id}><img src={'http://127.0.0.1:8000/' + val.thumbnail} class="product-hover-image img-responsive img-fullwidth" alt="product"/></Link>
+            <Link href={'/lab-coat/' + val.id}><img src={'http://127.0.0.1:8000/' + val.img} class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></Link>
+            <Link href={'/lab-coat/' + val.id}><img src={'http://127.0.0.1:8000/' + val.thumbnail} class="product-hover-image img-responsive img-fullwidth" alt="product"/></Link>
           </div>
           <div class="product-button-holder">
             <ul class="shop-icons">
-              <li class="item"><a href="#" class="button btn-quickview" title="Product quick view"></a></li>
-              <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
+              <li class="item"><Link href={'/lab-coat/' + val.id} class="button btn-quickview" title="Product quick view"></Link></li>
+              <li class="item">
+                <form onSubmit={addCart2} id={cart + val.id}>
+                  <input type='hidden' id='code' name='code' value={val.code} />
+                  <input type='hidden' id='name' name='name' value={val.name} />
+                  <input type='hidden' id='price' name='price' value={val.price} />
+                  <input type='hidden' id='material' name='material' value={val.material} />
+                  <input type='hidden' id='color' name='color' value={val.color} />
+                  <input type='hidden' id='img' name='img' value={val.img} />
+                  <input type='hidden' id='quantity' name='quantity' value='1' />
+                  <button type='submit' class="button tm-btn-add-to-cart">Add to cart</button>
+                </form>  
+              </li>
             </ul>
           </div>
         </div>
         <div class="product-details">
-          <span class="product-categories"><a href="#" rel="tag">Surgical Gown</a></span>
-          <h5 class="product-title"><a href={'/surgical-gown/' + val.id}>{val.name}</a></h5>
+          <span class="product-categories"><a href="#" rel="tag">Lab Coat</a></span>
+          <h5 class="product-title"><a href={'/lab-coat/' + val.id}>{val.name}</a></h5>
           <span class="price">
             <ins><span class="amount"><span class="currency-symbol"></span>{val.price}</span> EGP</ins>
           </span>

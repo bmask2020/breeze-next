@@ -3,6 +3,8 @@ import Navbar from '@/components/Navbar'
 import Link from 'next/link'
 import Footer from '@/components/Footer';
 import { useState, useEffect } from 'react';
+import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export default function PatientPants() {
 
@@ -21,6 +23,45 @@ export default function PatientPants() {
         getData();
         
   }, []);
+
+
+  const addCart = async(e) => {
+
+    e.preventDefault();
+    const formData = e.target.getAttribute('id');
+    const getForm = document.getElementById(formData).elements;
+
+  
+    const code = getForm['0'].value;
+    const name = getForm['1'].value;
+    const price = getForm['2'].value;
+    const material = getForm['3'].value;
+    const color = getForm['4'].value;
+    const img = getForm['5'].value;
+    const quantity = getForm['6'].value;
+
+    let formData2 = new FormData()
+    formData2.append('code',code);
+    formData2.append('name', name);
+    formData2.append('price', price);
+    formData2.append('material', material);
+    formData2.append('color', color);
+    formData2.append('img', img);
+    formData2.append('quantity', quantity);
+   
+
+    axios.post('http://127.0.0.1:8000/api/add-cart', formData2).then(response => 
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Product Add Success',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    ).catch(error => console.log(error));
+
+
+  }
 
     return (
         <>
@@ -84,6 +125,8 @@ export default function PatientPants() {
 
                   records.map((val, index) => {
 
+                    let cart = 'patientPants';
+
                     return(
 
                       <div class="isotope-item cat1 cat3">
@@ -96,8 +139,19 @@ export default function PatientPants() {
                             </div>
                             <div class="product-button-holder">
                               <ul class="shop-icons">
-                                <li class="item"><a href="#" class="button btn-quickview" title="Product quick view"></a></li>
-                                <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
+                                <li class="item"><Link href={'/patient-pants/' + val.id} class="button btn-quickview" title="Product quick view"></Link></li>
+                                <li class="item">
+                                  <form onSubmit={addCart} id={cart + val.id}>
+                                    <input type='hidden' id='code' name='code' value={val.code} />
+                                    <input type='hidden' id='name' name='name' value={val.name} />
+                                    <input type='hidden' id='price' name='price' value={val.price} />
+                                    <input type='hidden' id='material' name='material' value={val.material} />
+                                    <input type='hidden' id='color' name='color' value={val.color} />
+                                    <input type='hidden' id='img' name='img' value={val.img} />
+                                    <input type='hidden' id='quantity' name='quantity' value='1' />
+                                    <button type='submit' class="button tm-btn-add-to-cart">Add to cart</button>
+                                  </form>
+                                  </li>
                               </ul>
                             </div>
                           </div>

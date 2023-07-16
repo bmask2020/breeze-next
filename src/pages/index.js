@@ -5,6 +5,8 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import axios from 'axios'
+import Swal from 'sweetalert2'
 
 
 export default function Home() {
@@ -15,7 +17,7 @@ export default function Home() {
     const [records3, setRecords3] = useState([]);
     const [records4, setRecords4] = useState([]);
     const [records5, setRecords5] = useState([]);
-   
+
     useEffect(() => {
 
         async function getData() {
@@ -64,6 +66,8 @@ export default function Home() {
           
           }
 
+
+       
           
           getData();
           getData2();
@@ -72,6 +76,45 @@ export default function Home() {
           getData5();
           
     }, []);
+
+
+    const addCart = async(e) => {
+
+      e.preventDefault();
+      const formData = e.target.getAttribute('id');
+      const getForm = document.getElementById(formData).elements;
+
+    
+      const code = getForm['0'].value;
+      const name = getForm['1'].value;
+      const price = getForm['2'].value;
+      const material = getForm['3'].value;
+      const color = getForm['4'].value;
+      const img = getForm['5'].value;
+      const quantity = getForm['6'].value;
+
+      let formData2 = new FormData()
+      formData2.append('code',code);
+      formData2.append('name', name);
+      formData2.append('price', price);
+      formData2.append('material', material);
+      formData2.append('color', color);
+      formData2.append('img', img);
+      formData2.append('quantity', quantity);
+     
+
+      axios.post('http://127.0.0.1:8000/api/add-cart', formData2).then(response => 
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Product Add Success',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      ).catch(error => console.log(error));
+
+
+    }
 
     return (
         <>
@@ -201,6 +244,8 @@ export default function Home() {
 
                 records1.map((val, index) => {
 
+                      let cart = 'medical';
+
                     return (
 
                       <div class="isotope-item cat1">
@@ -210,18 +255,29 @@ export default function Home() {
                             <span class="onsale">Sale!</span>
                             <div class="thumb image-swap">
                               <Link href={'/medical-clothes/' + val.id}><img src={'http://127.0.0.1:8000/' + val.img} class="product-main-image img-responsive img-fullwidth" width="300" height="300" alt="product"/></Link>
-                              <Link href={'/medical-clothes' + val.id}><img src={'http://127.0.0.1:8000/' + val.thumbnail} class="product-hover-image img-responsive img-fullwidth" alt="product"/></Link>
+                              <Link href={'/medical-clothes/' + val.id}><img src={'http://127.0.0.1:8000/' + val.thumbnail} class="product-hover-image img-responsive img-fullwidth" alt="product"/></Link>
                             </div>
                             <div class="product-button-holder">
                               <ul class="shop-icons">
                                 <li class="item"><Link href={'/medical-clothes/' + val.id} class="button btn-quickview" title="Product quick view"></Link></li>
-                                <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
+                                <li class="item">
+                                  <form onSubmit={addCart} id={cart + val.id}>
+                                    <input type='hidden' id='code' name='code' value={val.code} />
+                                    <input type='hidden' id='name' name='name' value={val.name} />
+                                    <input type='hidden' id='price' name='price' value={val.price} />
+                                    <input type='hidden' id='material' name='material' value={val.material} />
+                                    <input type='hidden' id='color' name='color' value={val.color} />
+                                    <input type='hidden' id='img' name='img' value={val.img} />
+                                    <input type='hidden' id='quantity' name='quantity' value='1' />
+                                  <button type='submit' class="button tm-btn-add-to-cart">Add to cart</button>
+                                  </form>
+                                  </li>
                               </ul>
                             </div>
                           </div>
                           <div class="product-details">
                             <span class="product-categories"><a href="#" rel="tag">Medical Clothes</a></span>
-                            <h5 class="product-title"><Link href={'/medical-clothes' + val.id}>{val.name}</Link></h5>
+                            <h5 class="product-title"><Link href={'/medical-clothes/' + val.id}>{val.name}</Link></h5>
                             <span class="price">
                               <ins><span class="amount"><span class="currency-symbol">{val.price}</span> EGP </span></ins>
                             </span>
@@ -239,6 +295,7 @@ export default function Home() {
 
                 records2.map((val, index) => {
 
+                    let cart = 'protective';
                     return (
 
                       <div class="isotope-item cat2">
@@ -253,7 +310,20 @@ export default function Home() {
                             <div class="product-button-holder">
                               <ul class="shop-icons">
                                 <li class="item"><Link href={'/protective-clothes/' + val.id} class="button btn-quickview" title="Product quick view"></Link></li>
-                                <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
+                                <li class="item">
+                                 
+                                  <form onSubmit={addCart} id={cart + val.id}>
+                                    <input type='hidden' id='code' name='code' value={val.code} />
+                                    <input type='hidden' id='name' name='name' value={val.name} />
+                                    <input type='hidden' id='price' name='price' value={val.price} />
+                                    <input type='hidden' id='material' name='material' value={val.material} />
+                                    <input type='hidden' id='color' name='color' value={val.color} />
+                                    <input type='hidden' id='img' name='img' value={val.img} />
+                                    <input type='hidden' id='quantity' name='quantity' value='1' />
+                                  <button type='submit' class="button tm-btn-add-to-cart">Add to cart</button>
+                                  </form>
+                              
+                                  </li>
                               </ul>
                             </div>
                           </div>
@@ -275,6 +345,8 @@ export default function Home() {
 
               records3.map((val, index) => {
 
+                  let cart = 'beauty';
+
                   return (
 
                     <div class="isotope-item cat3">
@@ -289,7 +361,18 @@ export default function Home() {
                           <div class="product-button-holder">
                             <ul class="shop-icons">
                               <li class="item"><Link href={'/beauty-clothes' + val.id} class="button btn-quickview" title="Product quick view"></Link></li>
-                              <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
+                                <li class="item">
+                                  <form onSubmit={addCart} id={cart + val.id}>
+                                    <input type='hidden' id='code' name='code' value={val.code} />
+                                    <input type='hidden' id='name' name='name' value={val.name} />
+                                    <input type='hidden' id='price' name='price' value={val.price} />
+                                    <input type='hidden' id='material' name='material' value={val.material} />
+                                    <input type='hidden' id='color' name='color' value={val.color} />
+                                    <input type='hidden' id='img' name='img' value={val.img} />
+                                    <input type='hidden' id='quantity' name='quantity' value='1' />
+                                    <button type='submit' class="button tm-btn-add-to-cart">Add to cart</button>
+                                  </form>
+                                </li>
                             </ul>
                           </div>
                         </div>
@@ -354,6 +437,8 @@ export default function Home() {
                 {
                   records5.map((val,index) => {
 
+                    let cart = 'homePro';
+
                     return (
 
                       <div class="isotope-item cat1">
@@ -368,7 +453,18 @@ export default function Home() {
                             <div class="product-button-holder">
                               <ul class="shop-icons">
                                 <li class="item"><Link href={'/home-products/' + val.id} class="button btn-quickview" title="Product quick view"></Link></li>
-                                <li class="item"><a href="shop-cart.html" class="button tm-btn-add-to-cart">Add to cart</a></li>
+                                <li class="item">
+                                  <form onSubmit={addCart} id={cart + val.id}>
+                                    <input type='hidden' id='code' name='code' value={val.code} />
+                                    <input type='hidden' id='name' name='name' value={val.name} />
+                                    <input type='hidden' id='price' name='price' value={val.price} />
+                                    <input type='hidden' id='material' name='material' value={val.material} />
+                                    <input type='hidden' id='color' name='color' value={val.color} />
+                                    <input type='hidden' id='img' name='img' value={val.img} />
+                                    <input type='hidden' id='quantity' name='quantity' value='1' />
+                                    <button type='submit' class="button tm-btn-add-to-cart">Add to cart</button>
+                                  </form>
+                                </li>
                               </ul>
                             </div>
                           </div>
