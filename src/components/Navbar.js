@@ -1,12 +1,36 @@
 import Link from 'next/link'
 import dynamic from "next/dynamic"
 import { useAuth } from '@/hooks/auth'
+import { useState, useEffect } from 'react'
+import axios from '@/lib/axios'
+import Swal from 'sweetalert2'
 
 
 const Navbar = () => {
 
+
   const { logout } = useAuth()
   const { user } = useAuth({ middleware: 'guest' })
+  const [cartCount, setCartCount] = useState([]);
+  const [cart, setCart] = useState([]);
+  const [cartTotal, setCartTotal] = useState([]);
+
+  useEffect(() => {
+
+      async function getData() {
+          const query = await fetch('http://127.0.0.1:8000/api/get-cart');
+          const response = await query.json();
+          // console.log('response from API ', response);
+          setCartCount(response.data);
+          setCart(response.data2);
+          setCartTotal(response.data3);
+          console.log(response.data3)
+        }
+
+        getData();
+        
+  }, []);
+
 
   const dropdown1Display = () => {
    
@@ -60,6 +84,30 @@ const Navbar = () => {
      var Ele1 = document.getElementById('Drop3');
      Ele1.style.display = 'none';
   
+    }
+
+
+    const cartRemove = async(e) => {
+
+      e.preventDefault();
+      const formData = e.target.getAttribute('id');
+      const getForm = document.getElementById(formData).elements;
+      const id = getForm['0'].value;
+
+      let formData2 = new FormData()
+      formData2.append('id',id);
+      
+      axios.post('http://127.0.0.1:8000/api/remove-cart', formData2).then(response => 
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Product Removed Success',
+        showConfirmButton: false,
+        timer: 1500
+      }),
+    
+      ).catch(error => console.log(error));
+
     }
 
     return (
@@ -184,23 +232,43 @@ const Navbar = () => {
 
                       
                         {user ? ( 
-                                <Link href="/shopping-cart" className="mini-cart-icon" title="View your shopping cart"><img src="/frontend/images/shopping-cart.png" width="25" alt="cart"/><span className="items-count">1</span> <span className="cart-quick-info">1 item - <span className="amount"><span className="currencySymbol">&pound;</span>18.00</span></span></Link>
+                                <Link href="/shopping-cart" className="mini-cart-icon" title="View your shopping cart"><img src="/frontend/images/shopping-cart.png" width="25" alt="cart"/><span className="items-count">{cartCount}</span> <span className="cart-quick-info">1 item - <span className="amount"><span className="currencySymbol">&pound;</span>18.00</span></span></Link>
                                 ) : (
 
-                                  <Link href="/login" className="mini-cart-icon" title="View your shopping cart"> <img src="/frontend/images/shopping-cart.png" width="25" alt="cart"/><span className="items-count">1</span> <span className="cart-quick-info">1 item - <span className="amount"><span className="currencySymbol">&pound;</span>18.00</span></span></Link>
+                                  <Link href="/login" className="mini-cart-icon" title="View your shopping cart"> <img src="/frontend/images/shopping-cart.png" width="25" alt="cart"/><span className="items-count">{cartCount}</span> <span className="cart-quick-info">1 item - <span className="amount"><span className="currencySymbol">&pound;</span>18.00</span></span></Link>
 
                                 )}
 
                         <div className="dropdown-content">
                           <ul className="cart_list product_list_widget">
                             <li className="mini_cart_item">
-                              <a href="#" className="remove remove_from_cart_button" aria-label="Remove this item">&times;</a>
-                              <a href="#"> <img className="attachment-thumbnail" src="/frontend/images/shop/product.jpg" width="300" height="300" alt="images"/>Beanie</a>
-                              <span className="quantity">1  <span className="amount">
-                              <span className="currencySymbol"></span>18.00</span></span>
+
+                            {
+
+                                cart.map((val, index) => {
+
+                                  let cart = 'cart'; 
+                                return(
+                                  <>
+                                  <form onSubmit={cartRemove} id={cart + val.id}>
+                                  <input type='hidden' name="id" value={val.id} />
+                                  <button style={{color:'#e81123', border:'none', background:'inherit', fontWeight:'600'}} type='submit' className="remove remove_from_cart_button" aria-label="Remove this item">&times;</button>
+                                  </form>
+                                  <a href="#"> <img className="attachment-thumbnail" src={'http://127.0.0.1:8000/' + val.img} width="300" height="300" alt="images"/>{val.name}</a>
+                                  <span className="quantity">{val.quantity}  X<span className="amount">
+                                  <span className="currencySymbol"></span> {val.price} EGP</span></span>
+                                  </>
+                                )
+
+                             
+                              })
+                            }
+
+                              
+
                             </li>
                           </ul>
-                          <p className="total"> <strong>Subtotal:</strong> <span className="woocommerce-Price-amount amount"><span className="currencySymbol"></span>18.00</span> </p>
+                          <p className="total"> <strong>Subtotal:</strong> <span className="woocommerce-Price-amount amount"><span className="currencySymbol"></span>{cartTotal} EGP</span> </p>
                           <div className="buttons cart-action-buttons">
                             <div className="row">
                               <div className="col-6 pe-0">

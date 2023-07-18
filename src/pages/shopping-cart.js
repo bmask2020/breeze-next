@@ -3,8 +3,53 @@ import Navbar from '@/components/Navbar'
 import Link from 'next/link'
 import Footer from '@/components/Footer';
 import { useState, useEffect } from 'react';
+import axios from 'axios'
+import Swal from 'sweetalert2'
 
 function ShoppingCart() {
+
+  const [records, setRecords] = useState([]);
+  const [cartTotal, setCartTotal] = useState([]);
+   
+  useEffect(() => {
+
+      async function getData() {
+          const query = await fetch('http://127.0.0.1:8000/api/get-cart');
+          const response = await query.json();
+          // console.log('response from API ', response);
+          setRecords(response.data2);
+          setCartTotal(response.data3);
+          
+        }
+
+        getData();
+        
+  }, []);
+
+
+  const cartRemove = async(e) => {
+
+    e.preventDefault();
+    const formData = e.target.getAttribute('id');
+    const getForm = document.getElementById(formData).elements;
+    const id = getForm['0'].value;
+
+    let formData2 = new FormData()
+    formData2.append('id',id);
+    
+    axios.post('http://127.0.0.1:8000/api/remove-cart', formData2).then(response => 
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Product Removed Success',
+      showConfirmButton: false,
+      timer: 1500
+    }),
+  
+    ).catch(error => console.log(error));
+
+  }
+
 
     return (
 
@@ -74,62 +119,40 @@ function ShoppingCart() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="cart_item">
-                      <td className="product-remove"><a title="Remove this item" className="remove" href="#">×</a></td>
-                      <td className="product-thumbnail"><a href="#"><img alt="product" src="images/shop/product.jpg"/></a></td>
-                      <td className="product-name"><a href="shop-product-details.html">Winter Black Jacket</a>
-                        <ul className="variation">
-                          <li className="variation-size">Size: <span>Medium</span></li>
-                        </ul></td>
-                      <td className="product-price"><span className="amount">$36.00</span></td>
-                      <td className="product-quantity"><div className="quantity buttons_added">
-                          <input type="button" className="minus" value="-"/>
-                          <input type="number" size="4" className="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1"/>
-                          <input type="button" className="plus" value=""/>
-                        </div></td>
-                      <td className="product-subtotal"><span className="amount">$36.00</span></td>
-                    </tr>
-                    <tr className="cart_item">
-                      <td className="product-remove"><a title="Remove this item" className="remove" href="#">×</a></td>
-                      <td className="product-thumbnail"><a href="#"><img alt="product" src="images/shop/product.jpg"/></a></td>
-                      <td className="product-name"><a href="shop-product-details.html">Swan Crop V-Neck Tee</a>
-                        <ul className="variation">
-                          <li className="variation-size">Size: <span>Small</span></li>
-                        </ul></td>
-                      <td className="product-price"><span className="amount">$115.00</span></td>
-                      <td className="product-quantity"><div className="quantity buttons_added">
-                          <input type="button" className="minus" value="-"/>
-                          <input type="number" size="4" className="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1"/>
-                          <input type="button" className="plus" value="+"/>
-                        </div></td>
-                      <td className="product-subtotal"><span className="amount">$115.00</span></td>
-                    </tr>
-                    <tr className="cart_item">
-                      <td className="product-remove"><a title="Remove this item" className="remove" href="#">×</a></td>
-                      <td className="product-thumbnail"><a href="#"><img alt="product" src="images/shop/product.jpg"/></a></td>
-                      <td className="product-name"><a href="shop-product-details.html">Blue Solid Casual Shirt</a>
-                        <ul className="variation">
-                          <li className="variation-size">Size: <span>Large</span></li>
-                        </ul></td>
-                      <td className="product-price"><span className="amount">$68.00</span></td>
-                      <td className="product-quantity"><div className="quantity buttons_added">
-                          <input type="button" className="minus" value="-"/>
-                          <input type="number" size="4" className="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1"/>
-                          <input type="button" className="plus" value="+"/>
-                        </div></td>
-                      <td className="product-subtotal"><span className="amount">$68.00</span></td>
-                    </tr>
-                    <tr className="cart_item">
-                      <td colspan="3">
-                        <div className="form-inline coupon-form">
-                          <div className="coupon mb-3">
-                            <input type="text" name="coupon_code" className="input-text form-control mr-1" id="coupon_code" value="" placeholder="Coupon code"/> <button type="submit" className="button btn btn-theme-colored1" name="apply_coupon" value="Apply Coupon">Apply Coupon</button>
-                          </div>
-                        </div>
+                    {
+
+                    records.map((val, index) => {
+                      let cart = 'cart'; 
+                    return(
+                      <>
+                      <tr className="cart_item">
+                      <td className="product-remove">
+                        <form onSubmit={cartRemove} id={cart + val.id}>
+                        <input type='hidden' name="id" value={val.id} />
+                        <button type='submit' title="Remove this item" className="remove" style={{border:'none'}}>×</button>
+                        </form>
                       </td>
-                      <td colspan="2">&nbsp;</td>
-                      <td><button type="button" className="-cart-update-btn btn btn-theme-colored2">Update Cart</button></td>
+                      <td className="product-thumbnail"><a href="#"><img alt="product" src={'http://127.0.0.1:8000/' + val.img}/></a></td>
+                      <td className="product-name"><a href="#">{val.name}</a>
+                        <ul className="variation">
+                          <li className="variation-size">Color: <span>{val.color}</span></li>
+                        </ul></td>
+                      <td className="product-price"><span className="amount">{val.price} EGP</span></td>
+                      <td className="product-quantity"><div className="quantity buttons_added">
+                          <input type="button" className="minus" value="-"/>
+                          <input type="number" size="4" className="input-text qty text" title="Qty" value={val.quantity} name="quantity" min="1" step="1"/>
+                          <input type="button" className="plus" value="+"/>
+                        </div></td>
+                      <td className="product-subtotal"><span className="amount">{val.quantity * val.price} EGP</span></td>
                     </tr>
+                      </>
+                    )
+
+
+                    })
+                    }
+                    
+                 
                   </tbody>
                 </table>
               </div>
@@ -137,49 +160,19 @@ function ShoppingCart() {
 
               <div className="col-md-12 mt-30">
                 <div className="row">
+              
+                 
                   <div className="col-md-5">
-                    <h4>Calculate Shipping</h4>
-                    <form className="form" action="#">
-                      <div className="mb-3">
-                        <select className="form-control">
-                          <option>Select Country</option>
-                          <option>Australia</option>
-                          <option>UK</option>
-                          <option>USA</option>
-                        </select>
-                      </div>
-                      <div className="mb-3">
-                        <input type="text" className="form-control" placeholder="State/country" value=""/>
-                      </div>
-                      <div className="mb-3">
-                        <input type="text" className="form-control" placeholder="Postcod/zip" value=""/>
-                      </div>
-                      <div className="mb-3 mb-30">
-                        <button type="button" className="cart-update-total-button btn btn-theme-colored1">Update Totals</button>
-                      </div>
-                    </form>
-                  </div>
-                  <div className="col-md-2">
-                  </div>
-                  <div className="col-md-5">
-                    <h4>Cart Totals</h4>
+                    <h4>Total Including Tax	</h4>
                     <table className="table table-bordered">
                       <tbody>
                         <tr>
-                          <td>Cart Subtotal</td>
-                          <td>$180.00</td>
-                        </tr>
-                        <tr>
-                          <td>Shipping and Handling</td>
-                          <td>$70.00</td>
-                        </tr>
-                        <tr>
-                          <td>Order Total</td>
-                          <td>$250.00</td>
+                          <td>Total</td>
+                          <td>{cartTotal} EGP</td>
                         </tr>
                       </tbody>
                     </table>
-                    <a className="cart-checkout-button btn btn-theme-colored1" href="shop-checkout.html">Proceed to Checkout</a> </div>
+                    <Link className="cart-checkout-button btn btn-theme-colored1" href={'/checkout'}>Proceed to Checkout</Link> </div>
                 </div>
               </div>
           </div>

@@ -85,34 +85,27 @@ function About() {
                 <h5 class="mt-0"><i class="far fa-clock text-theme-colored1"></i> Opening Hours</h5>
                 <ul class="tm-sc-opening-hours tm-sc-opening-hours-compressed opening-hours border-light">
                   <li class="clearfix">
-                    <span>Monday - Thursday</span>
-                    <div class="value">9:00 - 17:00</div>
+                    <span>Saturday - Thursday</span>
+                    <div class="value">9:00 - 18:00</div>
                   </li>
+                 
                   <li class="clearfix">
                     <span>Friday</span>
-                    <div class="value">9.00 - 16.00</div>
-                  </li>
-                  <li class="clearfix">
-                    <span>Saturday</span>
-                    <div class="value">9.00 - 16.00</div>
-                  </li>
-                  <li class="clearfix">
-                    <span>Sunday</span>
                     <div class="value">Closed</div>
                   </li>
                 </ul>
                 <h5><i class="far fa-question-circle text-theme-colored1"></i> Need Help?</h5>
-                <p>Just make an appointment to get help from our experts.</p>
-                <div class="tm-sc-button"> <a href="#" target="_self" class="btn btn-theme-colored1 btn-sm"> View Hospital Details </a></div>
+                <p>If you need assistance, do not hesitate to contact us</p>
+                <div class="tm-sc-button"> <Link href={'/contact'} target="_self" class="btn btn-theme-colored1 btn-sm"> Contact </Link></div>
               </div>
             </div>
             <div class="mb-md-30 col-sm-12 col-lg-4 col-md-6">
               <h4 class="text-gray mt-0">About</h4>
-              <h2>Medinov Hospital</h2>
-              <p><em>One of the world&#8217;s leading hospitals providing safe &amp; compassionate care at its best for everyone.</em></p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque commodi molestiae autem fugit consectetur dolor ullam illo ipsa numquam.</p>
+              <h2>Naltex for Medical Clothes</h2>
+              <p><em>Naltex Medical Disposable Clothing Factory is regarded as one of the leading factories in Egypt and the Middle East in the field of disposable paper clothing including disposable medical clothing and workwear.</em></p>
+             
               <img src="/frontend/images/signature.png" class="attachment-large" alt="images" />
-              <div class="tm-sc-button mt-20"> <a href="#" target="_self" class="btn btn-theme-colored1 btn-sm"> Read more </a></div>
+             
             </div>
             <div class="col-sm-12 col-lg-4 hidden-md-down">
               <img width="340" height="464" src="/frontend/images/about/5.png" class="attachment-large" alt="images"/>
@@ -128,146 +121,23 @@ function About() {
         <div class="section-content">
           <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-7">
-              <h2>Our Services</h2>
-              <p>Eaque libero unde corrupti deleniti maxime ratione doloremque suscipit perferendis aperiam labore debitis atque odit neque possimus optio quo. Eaque libero unde corrupti deleniti maxime ratione doloremque suscipit perferendis aperiam labore suscipit perferendis aperiam labore debitis atque odit neque Eaque libero unde corrupti deleniti maxime ratione doloremque suscipit perferendis aperiam labore debitis atque odit neque possimus optio quo.</p>
-              <div class="row mb-10">
-                <div class="col-sm-6">
-                  <div class="tm-sc-icon-box icon-box icon-left tm-iconbox-icontype-font-icon text-left iconbox-centered-in-responsive iconbox-theme-colored1 icon-position-icon-left mb-30">
-                    <div class="icon-box-wrapper">
-                      <a class="icon icon-type-font-icon icon-gray mb-20"> <i class="flaticon-medical-ambulance14" ></i> </a>
-                      <div class="icon-text">
-                        <h5 class="icon-box-title"> Emergency Care</h5>
-                        <div class="content">
-                          <p>consectetur adipisicing elit.</p>
-                        </div>
-                      </div>
-                      <div class="clearfix"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="tm-sc-icon-box icon-box icon-left tm-iconbox-icontype-font-icon text-left iconbox-centered-in-responsive iconbox-theme-colored1 icon-position-icon-left mb-30">
-                    <div class="icon-box-wrapper">
-                      <a class="icon icon-type-font-icon icon-gray mb-20"> <i class="flaticon-medical-illness"></i> </a>
-                      <div class="icon-text">
-                        <h5 class="icon-box-title">Operation Theater</h5>
-                        <div class="content">
-                          <p>consectetur adipisicing elit.</p>
-                        </div>
-                      </div>
-                      <div class="clearfix"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-10">
-                <div class="col-sm-6">
-                  <div class="tm-sc-icon-box icon-box icon-left tm-iconbox-icontype-font-icon text-left iconbox-centered-in-responsive iconbox-theme-colored1 icon-position-icon-left mb-30">
-                    <div class="icon-box-wrapper">
-                      <a class="icon icon-type-font-icon icon-gray mb-20"> <i class="flaticon-medical-stethoscope10"></i> </a>
-                      <div class="icon-text">
-                        <h5 class="icon-box-title">Outdoor Checkup</h5>
-                        <div class="content">
-                          <p>consectetur adipisicing elit.</p>
-                        </div>
-                      </div>
-                      <div class="clearfix"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="tm-sc-icon-box icon-box icon-left tm-iconbox-icontype-font-icon text-left iconbox-centered-in-responsive iconbox-theme-colored1 icon-position-icon-left mb-30 " >
-                    <div class="icon-box-wrapper">
-                      <a class="icon icon-type-font-icon icon-gray mb-20"> <i class="flaticon-medical-balls" ></i> </a>
-                      <div class="icon-text">
-                        <h5 class="icon-box-title">Cancer Service</h5>
-                        <div class="content">
-                          <p>consectetur adipisicing elit.</p>
-                        </div>
-                      </div>
-                      <div class="clearfix"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="tm-sc-icon-box icon-box icon-left tm-iconbox-icontype-font-icon text-left iconbox-centered-in-responsive iconbox-theme-colored1 icon-position-icon-left mb-30 " >
-                    <div class="icon-box-wrapper">
-                      <a class="icon icon-type-font-icon icon-gray mb-20"> <i class="flaticon-medical-drops1" ></i> </a>
-                      <div class="icon-text">
-                        <h5 class="icon-box-title">Blood Test</h5>
-                        <div class="content">
-                          <p>consectetur adipisicing elit.</p>
-                        </div>
-                      </div>
-                      <div class="clearfix"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="mb-sm-50 col-sm-6">
-                  <div class="tm-sc-icon-box icon-box icon-left tm-iconbox-icontype-font-icon text-left iconbox-centered-in-responsive iconbox-theme-colored1 icon-position-icon-left mb-30" >
-                    <div class="icon-box-wrapper">
-                      <a class="icon icon-type-font-icon icon-gray mb-20"> <i class="flaticon-medical-tablets9" ></i> </a>
-                      <div class="icon-text">
-                        <h5 class="icon-box-title" > Pharmacy</h5>
-                        <div class="content">
-                          <p>consectetur adipisicing elit.</p>
-                        </div>
-                      </div>
-                      <div class="clearfix"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <h2>Our Vision</h2>
+              <p>The goal of the Naltex factory is to serve the clients of the different medical sector, by providing high quality and competitive prices for the products, in addition to that the Naltex factory works with a professional team at the highest level of experience technically and administratively to provide the most efficient service for the benefit of our customers while achieving the highest standards of integrity to ensure product quality .</p>
+             
+              <p>
+              We, at Naltex Medical Clothing, always strive for continuous improvement to maintain our position and leadership in the medical sector inside Egypt as well as outside it in the Middle East and Africa. As well as meeting the market requirements in terms of product quality and the balance between that and the appropriate price.
+              </p>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-5">
               <img src="/frontend/images/services/sc4.jpg" class="attachment-full mb-10" alt="images"/>
-              <div class="accordion tm-accordion accordion-classic accordion-theme-colored1" id="accordion500">
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="heading501">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse501" aria-expanded="true" aria-controls="collapse501">
-                      <strong>Where do I find my Office product key?</strong>
-                    </button>
-                  </h2>
-                  <div id="collapse501" class="accordion-collapse collapse show" aria-labelledby="heading501" data-bs-parent="#accordion500">
-                    <div class="accordion-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="heading502">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse502" aria-expanded="false" aria-controls="collapse502">
-                      <strong>I am having trouble, what else should I do?</strong>
-                    </button>
-                  </h2>
-                  <div id="collapse502" class="accordion-collapse collapse" aria-labelledby="heading502" data-bs-parent="#accordion500">
-                    <div class="accordion-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="heading503">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse503" aria-expanded="false" aria-controls="collapse503">
-                      <strong>I need more information about Theme.</strong>
-                    </button>
-                  </h2>
-                  <div id="collapse503" class="accordion-collapse collapse" aria-labelledby="heading503" data-bs-parent="#accordion500">
-                    <div class="accordion-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor
-                    </div>
-                  </div>
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>
       </div>
     </section>
    
-    <section class="">
+    {/* <section class="">
       <div class="container">
         <div class="section-title">
           <div class="row justify-content-md-center">
@@ -275,11 +145,9 @@ function About() {
               <div class="text-center mb-60">
                 <div class="tm-sc-section-title section-title section-title-style1 text-center">
                   <div class="title-wrapper">
-                    <h2 class="title icon-bottom"> <span class="">Our </span> <span class="text-theme-colored1">Doctors</span></h2>
+                    <h2 class="title icon-bottom"> <span class="">Our </span> <span class="text-theme-colored1">Products</span></h2>
                     <div class="title-seperator-line"></div>
-                    <div class="paragraph">
-                    <p>Explore Our Completed Services! Consectetur adipiscing elitt elit tellus, luctus pulvinar dapibus leoconsectetur luctus nec.</p>
-                    </div>
+                   
                   </div>
                 </div>
               </div>
@@ -299,7 +167,7 @@ function About() {
                         <div class="box-hover-effect">
                           <div class="staff-header effect-wrapper">
                             <div class="thumb">
-                              <img src="frontend/images/team/t1.jpg" class="img-fullwidth" alt="images"/>
+                              <img src="/frontend/images/team/t1.jpg" class="img-fullwidth" alt="images"/>
                             </div>
                             <div class="overlay-shade shade-white"></div>
                             <div class="icons-holder icons-holder-middle">
@@ -346,7 +214,7 @@ function About() {
                         <div class="box-hover-effect">
                           <div class="staff-header effect-wrapper">
                             <div class="thumb">
-                              <img src="frontend/images/team/t2.jpg" class="img-fullwidth" alt="images"/>
+                              <img src="/frontend/images/team/t2.jpg" class="img-fullwidth" alt="images"/>
                             </div>
                             <div class="overlay-shade shade-white"></div>
                             <div class="icons-holder icons-holder-middle">
@@ -488,7 +356,7 @@ function About() {
           </div>
         </div>
       </div>
-    </section>
+    </section> */}
     
 
   </div>

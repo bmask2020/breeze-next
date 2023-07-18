@@ -3,8 +3,28 @@ import Navbar from '@/components/Navbar'
 import Link from 'next/link'
 import Footer from '@/components/Footer';
 import { useState, useEffect } from 'react';
+import axios from 'axios'
 
 function Checkout() {
+
+
+  const [records, setRecords] = useState([]);
+  const [cartTotal, setCartTotal] = useState([]);
+   
+  useEffect(() => {
+
+      async function getData() {
+          const query = await fetch('http://127.0.0.1:8000/api/get-cart');
+          const response = await query.json();
+          // console.log('response from API ', response);
+          setRecords(response.data2);
+          setCartTotal(response.data3);
+        
+        }
+
+        getData();
+        
+  }, []);
 
     return (
 
@@ -59,9 +79,9 @@ function Checkout() {
         <div class="section-content">
           <form id="checkout-form" action="#">
             <div class="row mt-30">
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="billing-details">
-                  <h3 class="mb-30">Billing Details</h3>
+                  <h3 class="mb-30">Invoice details</h3>
                   <div class="row">
                     <div class="mb-3 col-md-6">
                       <label for="checkuot-form-fname">First Name</label>
@@ -84,44 +104,30 @@ function Checkout() {
                         <label for="checkuot-form-address">Address</label>
                         <input id="checkuot-form-address" type="email" class="form-control" placeholder="Street address"/>
                       </div>
-                      <div class="mb-3">
-                        <input type="email" class="form-control" placeholder="Apartment, suite, unit etc. (optional)"/>
-                      </div>
+                     
                     </div>
                     <div class="mb-3 col-md-6">
-                      <label for="checkuot-form-city">City</label>
-                      <input id="checkuot-form-city" type="email" class="form-control" placeholder="City"/>
+                      <label for="checkuot-form-city">Country</label>
+                      <input id="checkuot-form-city" type="text" class="form-control" placeholder="Country"/>
+                    </div>
+
+                    <div class="mb-3 col-md-6">
+                      <label>City</label>
+                      <input id="checkuot-form-city" type="text" class="form-control" placeholder="City"/>
+                    </div>
+
+                    <div class="mb-3 col-md-6">
+                      <label for="checkuot-form-zip">Phone</label>
+                      <input id="checkuot-form-zip" type="text" class="form-control" placeholder="Phone"/>
                     </div>
                     <div class="mb-3 col-md-6">
-                      <label>State/Province</label>
-                      <select class="form-control">
-                        <option>Select Country</option>
-                        <option>Australia</option>
-                        <option>UK</option>
-                        <option>USA</option>
-                      </select>
-                    </div>
-                    <div class="mb-3 col-md-6">
-                      <label for="checkuot-form-zip">Zip/Postal Code</label>
-                      <input id="checkuot-form-zip" type="email" class="form-control" placeholder="Zip/Postal Code"/>
-                    </div>
-                    <div class="mb-3 col-md-6">
-                      <label>Country</label>
-                      <select class="form-control">
-                        <option>Select Country</option>
-                        <option>Australia</option>
-                        <option>UK</option>
-                        <option>USA</option>
-                      </select>
+                      <label>Fax</label>
+                      <input id="checkuot-form-zip" type="text" class="form-control" placeholder="Fax"/>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
-                <h3>Additional information</h3>
-                <label for="order_comments" class="">Order notes&nbsp;<span class="optional">(optional)</span></label>
-                <textarea id="order_comments" class="form-control" placeholder="Notes about your order, e.g. special notes for delivery." rows="3"></textarea>
-              </div>
+            
               <div class="col-md-12 mt-30">
                 <h3>Your order</h3>
                 <table class="table table-striped table-bordered tbl-shopping-cart">
@@ -133,71 +139,44 @@ function Checkout() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td class="product-thumbnail"><a href="shop-product-details.html"><img alt="product" src="images/shop/product.jpg"/></a></td>
-                      <td class="product-name"><a href="shop-product-details.html">Winter Black Jacket</a> x 2</td>
-                      <td><span class="amount">$36.00</span></td>
+
+                  {
+
+                    records.map((val, index) => {
+
+                    return(
+                      <>
+                      <tr>
+                      <td class="product-thumbnail"><a href="shop-product-details.html"><img alt="product" src={'http://127.0.0.1:8000/' + val.img}/></a></td>
+                      <td class="product-name"><a href="#">{val.name}</a> x {val.quantity}</td>
+                      <td><span class="amount">{val.price * val.quantity} EGP</span></td>
                     </tr>
+                      </>
+                    )
+
+
+                    })
+                  }
+                  
+                  
+
                     <tr>
-                      <td class="product-thumbnail"><a href="shop-product-details.html"><img alt="product" src="images/shop/product.jpg"/></a></td>
-                      <td class="product-name"><a href="shop-product-details.html">Swan Crop V-Neck Tee</a> x 3</td>
-                      <td><span class="amount">$115.00</span></td>
-                    </tr>
-                    <tr>
-                      <td class="product-thumbnail"><a href="shop-product-details.html"><img alt="product" src="images/shop/product.jpg"/></a></td>
-                      <td class="product-name"><a href="shop-product-details.html">Blue Solid Casual Shirt</a> x 1</td>
-                      <td><span class="amount">$68.00</span></td>
-                    </tr>
-                    <tr>
-                      <td>Cart Subtotal</td>
+                      <td>Total Including Tax</td>
                       <td>&nbsp;</td>
-                      <td>$180.00</td>
+                      <td>{cartTotal} EGP</td>
                     </tr>
-                    <tr>
-                      <td>Shipping and Handling</td>
-                      <td>&nbsp;</td>
-                      <td>Free Shipping</td>
-                    </tr>
-                    <tr>
-                      <td>Order Total</td>
-                      <td>&nbsp;</td>
-                      <td>$250.00</td>
-                    </tr>
+                   
                   </tbody>
                 </table>
               </div>
-              <div class="col-md-12 mt-60">
-                <div class="card payment-method">
-                  <div class="card-header">
-                <h3>Payment Information</h3>
-                  </div>
+              <div class="col-md-12">
+               
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item p-30">
-                      <label>
-                        <input type="radio" name="optionsRadios" value="option1" checked />
-                        <strong>Direct Bank Transfer</strong>
-                      </label>
-                      <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
-                    </li>
-                    <li class="list-group-item p-30">
-                      <label>
-                        <input type="radio" name="optionsRadios" value="option2" checked />
-                        <strong>Cheque Payment</strong>
-                      </label>
-                      <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
-                    </li>
-                    <li class="list-group-item p-30">
-                      <label>
-                        <input type="radio" name="optionsRadios" value="option3" checked />
-                        <strong>PayPal Payment</strong>
-                      </label>
-                      <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
-                    </li>
-                    <li class="list-group-item p-30">
-                      <a href="#" class="btn btn-theme-colored1 btn-checkout">Place Order</a>
+                      <button type="submit" class="btn btn-theme-colored1 btn-checkout">Place Order</button>
                     </li>
                   </ul>
-                </div>
+                
               </div>
             </div>
           </form>

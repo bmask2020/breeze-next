@@ -33,6 +33,58 @@ function RefundPolicy() {
                 <script src="frontend/js/custom.js"></script>
             </Head>
             <Navbar />
+            
+  <div class="main-content-area">
+   
+    <section class="page-title layer-overlay overlay-dark-9 section-typo-light bg-img-center" style={{backgroundImage:'url("frontend/images/bg/bg1.jpg")'}}>
+      <div class="container pt-50 pb-50">
+        <div class="section-content">
+        <div class="row">
+            <div class="col-md-12 text-center">
+              <h2 class="title">Refund & Return Policy</h2>
+              <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumbs">
+                <div class="breadcrumbs">
+                  <span><Link href="/" rel="home">Home</Link></span>
+                  <span><i class="fa fa-angle-right"></i></span>
+                  <span><a href="#">Refund & Return Policy</a></span>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container about_cont">
+        <div class="row tm-blog-sidebar-row" style={{'display' : 'flex', 'justifyContent' : 'center'}}>
+          <div class="col-md-9">
+            <div id="section-one" class="mb-50">
+              <h3>Refund & Return Policy</h3>
+              <hr/>
+              <p class="mb-20">
+                If you want to exchange or return the product, you must contact us first.
+                The customer has the right to return the product within 3 days from the date of receipt, provided that the product is intact and no change has occurred. The customer bears all shipping costs, and the cost of the product is returned to the customer within 14 working days.
+                <br/>
+                
+                <br/>
+                If the product is defective or does not comply with the specifications that were specified at the time of purchase, the customer has the right to exchange or return the product within 14 days, in which case the customer must send proof of shipping costs indicating: the consignment number - freight - and cost. After that, the customer is entitled to a full refund.
+                <br/><br/>
+                Products inclusive in discounts and offers are not subject to exchange or refund, except for a defect in the product, see: Article 4 of the Return and Exchange Policies.
+              </p>
+             
+            </div>
+         
+    
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+
 
             <Footer />
         </>
