@@ -10,6 +10,16 @@ function Checkout() {
 
   const [records, setRecords] = useState([]);
   const [cartTotal, setCartTotal] = useState([]);
+  
+  const [firstName, setFirstName] = useState([]);
+  const [lastName, setLastName] = useState([]);
+  const [company, setCompany] = useState([]);
+  const [email, setEmail] = useState([]);
+  const [address, setAddress] = useState([]);
+  const [country, setCountry] = useState([]);
+  const [city, setCity] = useState([]);
+  const [phone, setPhone] = useState([]);
+  const [fax, setFax] = useState([]);
    
   useEffect(() => {
 
@@ -25,6 +35,42 @@ function Checkout() {
         getData();
         
   }, []);
+
+
+  const orderPlace = async(e) => {
+
+    e.preventDefault();
+
+    let formData = new FormData()
+
+    formData.append('first_name', firstName);
+    formData.append('last_name', lastName);
+    formData.append('company', company);
+    formData.append('email', email);
+    formData.append('address', address);
+    formData.append('country', country);
+    formData.append('city', city);
+    formData.append('phone', phone);
+    formData.append('fax', fax);
+   
+
+    axios
+    .post('http://127.0.0.1:8000/api/place-order', formData)
+    .then(response => 
+       
+      // console.log(response.data.substring(115,218))
+
+        window.location.href =  response.data.substring(115,218)
+
+     
+        )
+    .catch(error => console.log(error))
+
+
+  
+
+
+  }
 
     return (
 
@@ -77,7 +123,7 @@ function Checkout() {
     <section>
       <div class="container">
         <div class="section-content">
-          <form id="checkout-form" action="#">
+          <form id="checkout-form" onSubmit={orderPlace}>
             <div class="row mt-30">
               <div class="col-md-12">
                 <div class="billing-details">
@@ -85,44 +131,44 @@ function Checkout() {
                   <div class="row">
                     <div class="mb-3 col-md-6">
                       <label for="checkuot-form-fname">First Name</label>
-                      <input id="checkuot-form-fname" type="email" class="form-control" placeholder="First Name"/>
+                      <input id="checkuot-form-fname" onChange={(e) => {setFirstName(e.target.value)}} type="text" class="form-control" placeholder="First Name" required/>
                     </div>
                     <div class="mb-3 col-md-6">
                       <label for="checkuot-form-lname">Last Name</label>
-                      <input id="checkuot-form-lname" type="email" class="form-control" placeholder="Last Name"/>
+                      <input id="checkuot-form-lname" type="text" onChange={(e) => {setLastName(e.target.value)}} class="form-control" placeholder="Last Name" required/>
                     </div>
                     <div class="col-md-12">
                       <div class="mb-3">
                         <label for="checkuot-form-cname">Company Name</label>
-                        <input id="checkuot-form-cname" type="email" class="form-control" placeholder="Company Name"/>
+                        <input id="checkuot-form-cname" onChange={(e) => {setCompany(e.target.value)}} type="text" class="form-control" placeholder="Company Name" required/>
                       </div>
                       <div class="mb-3">
                         <label for="checkuot-form-email">Email Address</label>
-                        <input id="checkuot-form-email" type="email" class="form-control" placeholder="Email Address"/>
+                        <input id="checkuot-form-email" onChange={(e) => {setEmail(e.target.value)}} type="email" class="form-control" placeholder="Email Address" required/>
                       </div>
                       <div class="mb-3">
                         <label for="checkuot-form-address">Address</label>
-                        <input id="checkuot-form-address" type="email" class="form-control" placeholder="Street address"/>
+                        <input id="checkuot-form-address" onChange={(e) => {setAddress(e.target.value)}} type="text" class="form-control" placeholder="Street address" required/>
                       </div>
                      
                     </div>
                     <div class="mb-3 col-md-6">
                       <label for="checkuot-form-city">Country</label>
-                      <input id="checkuot-form-city" type="text" class="form-control" placeholder="Country"/>
+                      <input id="checkuot-form-city" onChange={(e) => {setCountry(e.target.value)}} type="text" class="form-control" placeholder="Country" required/>
                     </div>
 
                     <div class="mb-3 col-md-6">
                       <label>City</label>
-                      <input id="checkuot-form-city" type="text" class="form-control" placeholder="City"/>
+                      <input id="checkuot-form-city" onChange={(e) => {setCity(e.target.value)}} type="text" class="form-control" placeholder="City" required/>
                     </div>
 
                     <div class="mb-3 col-md-6">
                       <label for="checkuot-form-zip">Phone</label>
-                      <input id="checkuot-form-zip" type="text" class="form-control" placeholder="Phone"/>
+                      <input id="checkuot-form-zip" type="text" onChange={(e) => {setPhone(e.target.value)}} class="form-control" placeholder="Phone" required/>
                     </div>
                     <div class="mb-3 col-md-6">
                       <label>Fax</label>
-                      <input id="checkuot-form-zip" type="text" class="form-control" placeholder="Fax"/>
+                      <input id="checkuot-form-zip" onChange={(e) => {setFax(e.target.value)}} type="text" class="form-control" placeholder="Fax"/>
                     </div>
                   </div>
                 </div>
